@@ -11,9 +11,7 @@
 <body style="width: 100%;height: 100vh;background: darkslategray;display: flex;justify-content: center;align-items: center;">
   <canvas id="canva" style="border: 2px solid white">
   </canvas>
-  <input type="range" name="range" id="range" min="0" max="400" oninput="move()" value="0"/>
   <script type="text/javascript" charset="utf-8">
-    const range = document.getElementById('range').value;
     const canvas = document.getElementById('canva');
     const ctx = canvas.getContext('2d');
     // Width and  Height
