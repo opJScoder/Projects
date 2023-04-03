@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Digital Clock</title>
+  <style type="text/css" media="all">
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      width:100vw;
+      overflow: hidden;
+      background: radial-gradient(#3F3F3F, #000)
+    }
+
+    #time {
+      position: relative;
+      width: 350px;
+      height: 350px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #222;
+      border-radius: 50%;
+      box-shadow: inset 0 0 .1px 30px #18FFE3, inset 0 0 50px 20px #18FFE3;
+    }
+    
+    #sir{
+      position: absolute;
+      z-index:100;
+      width: 410px;
+      height: 410px;
+      border-radius: 50%;
+      transform: rotate(-73deg)
+      }
+    #sir span{
+      position: absolute;
+      font-size: 1.3rem;
+      left: 50%;
+      transform-origin: 0 205px;
+      font-weight:500;
+      font-family:monospace;
+    }
+
+    #sir span:nth-child(1){color: red;text-shadow:0 0 10px red,0 0 30px red}
+    #sir span:nth-child(2){color: orange;text-shadow:0 0 10px orange,0 0 30px orange}
+    #sir span:nth-child(3){color: yellow;text-shadow:0 0 10px yellowgreen,0 0 30px yellow}
+    #sir span:nth-child(4){color: green;text-shadow:0 0 10px green,0 0 30px green}
+    #sir span:nth-child(5){color: blue;text-shadow:0 0 10px blue,0 0 30px blue}
+    #sir span:nth-child(6){color: khaki;text-shadow:0 0 10px khaki,0 0 30px khaki}
+    #sir span:nth-child(9){color: red;text-shadow:0 0 10px red,0 0 30px red}
+    #sir span:nth-child(10){color: yellow;text-shadow:0 0 10px yellow,0 0 30px yellow}
+    #sir span:nth-child(11){color: skyblue;text-shadow:0 0 10px skyblue,0 0 30px skyblue}
+    
+    
+
+    #time:before,
+    #time:after {
+      content: '';
+      position: absolute;
+      width: 101%;
+      height: 101%;
+      border-radius: 50%;
+      background: linear-gradient(45deg, red, blue, green, yellow, red, blue, green, yellow);
+      z-index: -1;
+      background-size: 200%;
+      animation: gradient 10s infinite linear;
+    }
+
+    #time:after {
+      filter: blur(30px)
+    }
+
+    @keyframes gradient {
+      0% {
+        background-position: 0 0;
+      }
+
+      50% {
+        background-position: 200% 0;
+      }
+
+      100% {
+        background-position: 0 0;
+      }
+    }
+
+    #time .circle {
+      position: absolute;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    #time .circle svg {
+      position: relative;
+      transform: rotate(270deg)
+    }
+
+    #time .circle:nth-child(1) svg {
+      width: 250px;
+      height: 250px;
+    }
+
+    #time .circle:nth-child(2) svg {
+      width: 210px;
+      height: 210px;
+    }
+
+    #time .circle:nth-child(3) svg {
+      width: 170px;
+      height: 170px;
+    }
+
+    #time .circle svg circle {
+      width: 100%;
+      height: 100%;
+      fill: transparent;
+      stroke: var(--clr);
+      stroke-width: 5;
+      transform: translate(5px, 5px);
+      opacity: 0.25
+    }
+
+    #time .circle:nth-child(1) svg circle {
+      stroke-dasharray: 760;
+      stroke-dashoffset: 760
+    }
+
+    #time .circle:nth-child(2) svg circle {
+      stroke-dasharray: 630;
+      stroke-dashoffset: 630
+    }
+
+    #time .circle:nth-child(3) svg circle {
+      stroke-dasharray: 510;
+      stroke-dashoffset: 510
+    }
+
+    .dots {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      z-index: 10
+    }
+
+    .dots::before {
+      content: '';
+      position: absolute;
+      top: -2px;
+      width: 15px;
+      height: 15px;
+      background: var(--clr);
+      border-radius: 50%;
+      box-shadow: 0 0 20px var(--clr), 0 0 40px var(--clr), 0 0 60px var(--clr), 0 0 80px var(--clr)
+    }
+
+    .tmbx {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+  
+    .tmbx #hr::after,
+    .tmbx #min::after {
+      content: ':';
+      position: absolute;
+    }
+
+    .tmbx div {
+      color: var(--c);
+      text-shadow: 0 0 10px var(--c), 0 0 20px var(--c);
+      margin: 6px;
+      font-family: monospace;
+    }
+
+    .ap {
+      position: absolute;
+      transform: translateY(-20px);
+      font-size: 0.6rem;
+      right: 110px
+    }
+
+    #cl,
+    #cr {
+      position: absolute;
+    }
+
+    #cl {
+      color: #FF871D;
+      text-shadow: 0 0 10px #FF871D, 0 0 12px #FF871D;
+      top: 130px;
+      font-family: monospace
+    }
+
+    #cr {
+      font-family: cursive;
+      color: #38A6FF;
+      text-shadow: 0 0 10px #38A6FF, 0 0 12px #38A6FF;
+      bottom: 130px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="sir"><p>NIMESH SIR</p></div>
+  <div id="time">
+    <div class="circle" style="--clr:#ff2972">
+      <div class="dots sec_dot"></div>
+      <svg>
+        <circle cx="120" cy="120" r="120" id="ss" />
+      </svg>
+    </div>
+    <div class="circle" style="--clr:#fee800">
+      <div class="dots min_dot"></div>
+      <svg>
+        <circle cx="100" cy="100" r="100" id="mm" />
+      </svg>
+    </div>
+    <div class="circle" style="--clr:#04fc43">
+      <div class="dots hr_dot"></div>
+      <svg>
+        <circle cx="80" cy="80" r="80" id="hh" />
+      </svg>
+    </div>
+    <div class="tmbx">
+      <div id="hr" style="--c:#04fc43"></div>
+      <div id="min" style="--c:#fee800"></div>
+      <div id="sec" style="--c:#ff2972"></div>
+      <div class="ap" style="--c:#fff">
+        <div id="ampm"></div>
+      </div>
+    </div>
+    <div id="cl">Digital Clock</div>
+    <p id="cr">!i! JS !i!</p>
+  </div>
+  <script type="text/javascript" charset="utf-8">
+  let sir =document.querySelector('#sir p');
+  sir.innerHTML=sir.innerText.split("").map((char,i)=>`<span style="transform:rotate(${i*32}deg)">${char}</span>`).join("");
+    setInterval(() => {
+      let hh = document.getElementById('hh');
+      let mm = document.getElementById('mm');
+      let ss = document.getElementById('ss');
+
+      let sec_dot = document.querySelector('.sec_dot');
+      let min_dot = document.querySelector('.min_dot');
+      let hr_dot = document.querySelector('.hr_dot');
+
+      let hr = document.getElementById('hr');
+      let min = document.getElementById('min');
+      let sec = document.getElementById('sec');
+      let ampm = document.getElementById('ampm');
+
+      let h = new Date().getHours();
+      let m = new Date().getMinutes();
+      let s = new Date().getSeconds();
+
+      h = (h < 10) ? "0" + h : h;
+      m = (m < 10) ? "0" + m : m;
+      s = (s < 10) ? "0" + s : s;
+      ampm.innerHTML=(h >=12) ? "PM":"AM";
+      
+      if(h>12){h=h-12}
+      hh.style.strokeDashoffset = (510 - (510 * h) / 12) - (0.7 * m);
+      mm.style.strokeDashoffset = (630 - (630 * m) / 60) - (0.16 * s);
+      ss.style.strokeDashoffset = 760 - (760 * s) / 60;
+
+      sec_dot.style.transform = `rotateZ(${s*6}deg)`;
+      min_dot.style.transform = `rotateZ(${(m*6)+(s*0.1)}deg)`;
+      hr_dot.style.transform = `rotateZ(${(h*30)+(m/2)}deg)`;
+      
+      hr.innerHTML = h;
+      min.innerHTML = m;
+      sec.innerHTML = s;
+      if(h==12 && ampm.innerHTML=="PM"){
+      hh.style.strokeDashoffset = (510 - (510 * 0) / 12) - (0.7 * m);
+      }
+    })
+  </script>
+</body>
+
+</html>

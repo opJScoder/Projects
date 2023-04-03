@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>A Running Rabbit!</title>
+</head>
+
+<body>
+  <div id="main">
+    <img src="rabbit.png" alt="Rabbit" />
+    <div id="card">
+      <li id="li"></li>
+    </div>
+  </div>
+  <script type="text/javascript" charset="utf-8">
+    let val = []
+    for (i = 1.2; i < 76; i++) {
+      val.push(`8` * i + "px 0")
+    }
+    document.getElementById('li').style.boxShadow = val;
+    document.getElementsByTagName('img')[0].addEventListener('click', function() {
+      let style = document.createElement('style');
+      //link.rel='stylesheet';
+      //link.href='rabbit.css';
+      style.textContent = ` * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  place-items: center;
+  background: radial-gradient(#fff, black)
+}
+
+#main {
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 0 100px 5px #48D745;
+  border-radius: 40px;
+}
+
+#main,
+img,
+#card {
+  width: 600px;
+  height: 450px;
+}
+
+img {
+  position: absolute;
+  transform: rotate(-.1deg)
+}
+
+#card {
+  display: flex;
+  justify-content: space-between;
+  border-radius: 40px;
+  overflow: hidden;
+  animation: slide 18s linear infinite;
+  position: absolute;
+}
+
+@keyframes slide {
+  0% {
+    transform: translatex(250px);
+  }
+
+  99% {
+    transform: translatex(-50px);
+  }
+
+  100% {
+    transform: translatex(250px);
+  }
+
+}
+
+li {
+  list-style: none;
+  margin-left: 1.5px;
+  width: 5.8px;
+  height: 100%;
+  background: black;
+}`
+      document.getElementsByTagName('head')[0].appendChild(style);
+    })
+  </script>
+</body>
+
+</html>

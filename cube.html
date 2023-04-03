@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Light cube</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      background: radial-gradient(#000213, #0F0F0F);
+      display: grid;
+      place-items: center;
+      perspective: 1000px;
+    }
+    
+    :root{
+      --w:230px;
+      --c:green;
+      --a:110;
+    }
+
+    .cube {
+      position: relative;
+      width: var(--w);
+      height: var(--w);
+      transform-style: preserve-3d;
+      animation: rot 5s linear infinite;
+    }
+
+    @keyframes rot {
+      0% {
+        transform: rotatex(-30deg)rotatey(0deg)
+      }
+
+      100% {
+        transform: rotatex(-30deg)rotatey(360deg)
+      }
+    }
+
+    .cube div,
+    p,.top{
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+    }
+
+    .cube div,.top {
+      transform-style: preserve-3d
+    }
+
+  .cube p {
+      background: linear-gradient(#161616, var(--c));
+      transform: rotateY(calc(90deg*var(--i))) translateZ(calc(var(--w)/2));
+    }
+    .top{
+      background: #181818;
+      transform: rotatex(90deg) translatez(calc(var(--w)/2));
+    }
+    .top::before{
+      content:'';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgb(0,var(--a), 0);
+      transform: translatez(-300px);
+      filter: blur(20px);
+      box-shadow: 
+      0 0 80px rgb(0,var(--a), 0),
+      0 0 90px rgb(0,calc(var(--a)*1.1), 0),
+      0 0 100px rgb(0,calc(var(--a)*2), 0)
+      ;    }
+  </style>
+</head>
+
+<body>
+  <div class="cube">
+    <main class="top"></main>
+    <div>
+      <p style="--i:0"></p>
+      <p style="--i:1"></p>
+      <p style="--i:2"></p>
+      <p style="--i:3"></p>
+    </div>
+  </div>
+</body>
+
+</html>

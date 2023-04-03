@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Check✔️ whether prime or not</title>
+  <style type="text/css" media="all">
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    main {
+      width: 100vw;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      background: linear-gradient(to right, #1D2B64, #fff, #F8CDDA);
+      padding: 40px 0 100px 0;
+    }
+
+    #num {
+      text-align: center;
+      border: none;
+      border-radius: 15px;
+      border: 2px solid darkgreen;
+      height: 45px;
+      outline: none;
+      margin: 20px;
+      width: 45%;
+      font-size: 1.2rem;
+      transition: .3s;
+    }
+
+    #num:focus {
+      width: 50%;
+      border-top-color: red;
+      border-bottom-color: blue;
+      border-right-color: yellow;
+      border-left-color: lightblue;
+    }
+
+    #btn {
+      background-image: linear-gradient(to right, #16A085 0%, #F4D03F 51%, #16A085 100%);
+      padding: 8px 15px;
+      transition: 0.2s;
+      background-size: 200% auto;
+      color: white;
+      box-shadow: 0 0 20px #eee;
+      border-radius: 20px;
+      border: none;
+      outline: none;
+    }
+
+    #btn:active {
+      background-position: right center;
+      transform: scale(1.05);
+    }
+
+    input {
+      font-size: 1.2rem;
+    }
+
+    .a {
+      border: 2px solid green;
+      border-radius: 13px;
+      background: white;
+      padding: 10px 30px;
+      font-family: monospace;
+      font-size: 1.2rem;
+      width: 35%;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: radial-gradient(white, white, #888);
+      padding: 10px;
+    }
+
+    .b {
+      width: 72%;
+      margin: 50px;
+    }
+
+    #val {
+      margin-top: 20px;
+    }
+
+    #main {
+      width: 100vw;
+      display: flex;
+      justify-content: space-evenly
+    }
+  </style>
+</head>
+
+<body>
+  <main>
+    <h1 style="font-size:2rem;font-weight:bold">Prime Numbers</h1>
+    <p style="font-size:.8rem">-made by js</p>
+    <input type="number" id="num" placeholder="Enter the value" />
+    <input type="button" id="btn" value='Get' onclick="check()" />
+    <div id="val" class="a b">Check Prime or Not!</div>
+    <div id="main">
+      <div id="val1" class="a">Get the Factors, here!</div>
+      <div id="val2" class="a">Get Prime Factors, here!</div>
+    </div>
+    <div id="val3" class="a b">Get all the Prime numbers less than entered number, here!</div>
+  </main>
+  <script type="text/javascript" charset="utf-8">
+    let check = () => {
+      let n = document.getElementById('num').value;
+      let a = n.length;
+      if (a > 5) { alert("What the use?") }
+      else if (a == 0) { alert("Enter the values!") }
+      else if (n <= 0) { alert("Not now!") }
+      else if (n == 1) { alert("1 is neither a prime nor a composite number! It's Unique") }
+      else {
+        //Prime or not
+        var ans = " ";
+        let c = 0;
+        for (let i = 2; i < Math.sqrt(n); i++) {
+          if (n % i == 0) {
+            var ans = `${n} is not a prime number!`
+            c = 1;
+            break;
+          }
+        }
+        if (c == 0)  var ans = `${n} is a prime number!` ;
+        document.getElementById('val').innerHTML = ans;
+
+
+        //factors:-
+
+        var ans1 = [];
+        for (let i = 1; i <= n; i++) {
+          if (n % i == 0)  ans1.push(i) 
+        }
+        var ans1 = ans1.join(', ');
+        document.getElementById('val1').innerHTML = "Factor(s):-<br><br>" + ans1;
+
+
+        //Primes less than number
+        var ans3 = [];
+        for (let i = 1; i <= n; i++) {
+          var f = 0;
+          for (let j = 1; j <= i; j++) {
+            if (i % j == 0) { f++; }
+          }
+          if (f == 2) { ans3.push(i) };
+        }
+        var ans2 = ans3.join(', ')
+        document.getElementById('val3').innerHTML = `Total no. of Prime Number(s) less than or equal to ` + n + ` :- ${ans3.length}<br>Prime Number(s) less than or equal to ` + n + " :-<br><br>" + ans2;
+
+        // Prime Factors:-
+        var factors = [], i = 2;
+        while (n >= 2) {
+          if (n % i == 0) {
+            factors.push(i);
+            n = n / i;
+          }
+          else {
+            i++;
+          }
+        }
+        document.getElementById('val2').innerHTML = `Prime Factor(s):-` + "<br><br>" + factors.join(' x ');
+      }
+    }
+  </script>
+</body>
+
+</html>

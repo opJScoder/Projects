@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Prism</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: radial-gradient(white, black);
+      height: 100vh;
+      position: relative;
+      perspective: 1000px;
+    }
+
+    .box {
+      width: 100px;
+      height: 100px;
+      position: absolute;
+      transform-style: preserve-3d;
+      animation:
+        rot 5s infinite linear;
+    }
+
+    @keyframes rot {
+      0% {
+        transform: rotatex(0deg)rotatey(0deg)rotatez(0deg)
+      }
+
+      100% {
+        transform: rotatex(360deg)rotatey(360deg)rotatez(-360deg)
+      }
+    }
+
+    .faces {
+      width: 100px;
+      height: 100px;
+      background: repeating-radial-gradient(red, orange, yellow, green, deepskyblue, indigo, violet);
+      font-size: 2rem;
+      display: grid;
+      place-items: center;
+      position: absolute;
+      transition: all .3s;
+      border: 2px solid black;
+    }
+
+    .box:hover>#s1 {
+      transform: translateZ(125px)rotatey(360deg)
+    }
+
+    .box:hover>#s2 {
+      transform: translateZ(-125px)rotatey(-180deg)
+    }
+
+    .box:hover>#s3 {
+      right: 125px;
+      transform: rotatey(270deg)
+    }
+
+    .box:hover>#s4 {
+      left: 125px;
+      transform: rotatey(-270deg)
+    }
+
+    .box:hover>#s5 {
+      top: 125px;
+      transform: rotatex(-270deg)
+    }
+
+    #s1 {
+      transform: translateZ(70px);
+      clip-path: polygon(50% 0, 100% 100%, 0 100%)
+    }
+
+    #s2 {
+      transform: translateZ(-70px);
+      clip-path: polygon(50% 0, 100% 100%, 0 100%)
+    }
+
+    #s3 {
+      right: 50px;
+      width: 140px;
+      height: 111.5px;
+      transform: rotateY(-90deg)rotatex(26.7deg)translatez(-37.5px)translateY(-25.1px)
+    }
+
+    #s4 {
+      left: 50px;
+      height: 111.5px;
+      width: 140px;
+      transform: rotateY(90deg)rotatex(26.7deg)translatez(-37.5px)translateY(-25.1px)
+    }
+
+    #s5 {
+      top: 50px;
+      height: 140px;
+      transform: rotatex(-90deg)translatez(-20.1px);
+    }
+  </style>
+</head>
+
+<body id="body">
+  <div class="box" id="bx">
+    <div class="faces" id="s1"></div>
+    <div class="faces" id="s2"></div>
+    <div class="faces" id="s3"></div>
+    <div class="faces" id="s4"></div>
+    <div class="faces" id="s5"></div>
+  </div>
+  <input type="range" name="range" id="range" min="1" max="5" style="position: absolute;bottom:50%;transform: scale(2)rotate(90deg);right: 0" oninput="ch_dur()" value="2"/>
+  <input type="range" style="position: absolute;bottom:50%;transform: scale(2)rotate(90deg);left: 0" id="range2" min="0" max="1000" oninput="ch_per()" value="1000"/>
+</body>
+<script type="text/javascript" charset="utf-8">
+  let r1 = document.getElementById('range');
+  let r2 = document.getElementById('range2');
+  let box = document.getElementById('bx').style;
+let body = document.getElementById('body').style;
+  let ch_dur=()=>{
+    let val=r1.value;
+    box.animationDuration=val+"s";
+    if(val==5){box.animationDuration="0s";}
+  }
+  let ch_per=()=>{
+    let val=r2.value;
+    body.perspective= val+'px';
+  }
+</script>
+
+</html>

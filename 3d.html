@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>3D Art</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+  
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: radial-gradient(white, black);
+      height: 100vh;
+      position: relative;
+      perspective: 1000px;
+      user-select: none;
+    }
+  
+    .box {
+      width: 100px;
+      height: 100px;
+      position: absolute;
+      transform-style: preserve-3d;
+      -webkit-animation: rot 5s infinite linear;
+      -o-animation: rot 5s infinite linear;
+      animation: rot 5s infinite linear;
+    }
+  
+    @keyframes rot{
+      0% {
+        transform: rotatex(0deg)rotatey(0deg)rotatez(0deg)
+      }
+  
+      100% {
+        transform: rotatex(-720deg)rotatey(-360deg)rotatez(-360deg)
+      }
+    }
+  
+    .faces {
+      width: 100%;
+      height: 100%;
+      background: repeating-radial-gradient(red,orange,yellow,green,deepskyblue,indigo,violet);
+      font-size: 2rem;
+      display: grid;
+      place-items: center;
+      border-radius:1px;
+      position: absolute;
+      transition: all .3s;
+      box-shadow:0 0 0 20px indigo,0 0 0 30px deepskyblue,0 0 0 40px green,0 0 0 50px yellow,0 0 0 60px orange,0 0 0 70px red,0 0 0 72px white,0 0 100px 75px black
+    }
+    .box:hover>#s1 {
+      transform:translateZ(125px)rotatey(360deg)
+    }
+  
+    .box:hover>#s2 {
+      transform: translateZ(-125px)rotatey(-180deg)
+    }
+  
+    .box:hover>#s3 {
+      right: 125px;
+      transform: rotatey(270deg)
+    }
+  
+    .box:hover>#s4 {
+      left: 125px;
+      transform: rotatey(-270deg)
+    }
+  
+    .box:hover>#s5 {
+      bottom: 125px;
+      transform: rotatex(270deg)
+    }
+  
+    .box:hover>#s6 {
+      top: 125px;
+      transform: rotatex(-270deg);
+      
+    }
+  
+    #s1 {
+      transform: translateZ(50px)
+    }
+  
+    #s2 {
+      transform: translateZ(-50px)
+    }
+  
+    #s3 {
+      right: 50px;
+      transform: rotateY(-90deg)
+    }
+  
+    #s4 {
+      left: 50px;
+      transform: rotateY(90deg)
+    }
+  
+    #s5 {
+      bottom: 50px;
+      transform: rotatex(90deg)
+    }
+  
+    #s6 {
+      top: 50px;
+      transform: rotatex(-90deg);
+    }
+  </style>
+</head>
+
+<body>
+    <div class="box">
+      <div class="faces" id="s1">Js</div>
+      <div class="faces" id="s2"></div>
+      <div class="faces" id="s3"></div>
+      <div class="faces" id="s4"></div>
+      <div class="faces" id="s5"></div>
+      <div class="faces" id="s6"></div>
+    </div>
+</body>
+
+</html>

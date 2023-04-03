@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>prime</title>
+</head>
+
+<body>
+  <input type="number" id="n"><input type="number" id="n1">
+  <button onclick="div()">divide</button>
+  <div id="val2"></div>
+  <script type="text/javascript" charset="utf-8">
+    let div = () => {
+      var n = document.getElementById('n').value;
+      var n1 = document.getElementById('n1').value;
+      var factors = [];
+      i = 2;
+      while (n >= 2) {
+        if (n % i == 0) {
+          factors.push(i);
+          n = n / i;
+        }
+        else {
+          i++;
+        }
+      }for(i=1;i<)
+      var factor=factors.length==2?factors[0]*factors[1]:"ok";
+      document.getElementById('val2').innerHTML = `Prime Factor(s):-` + "<br><br>" + factor;
+    }
+  </script>
+</body>
+
+</html>

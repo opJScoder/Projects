@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Loader</title>
+  <style type="text/css" media="all">
+    * {
+      margin: 0%;
+      padding: 0%;
+      box-sizing: border-box;
+    }
+
+    #box {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      animation: fade 4s linear;
+      background: #080808;
+      opacity: 0;
+    }
+    
+    @-webkit-keyframes fade {
+      0% {
+        opacity: 1;
+      }
+
+      75% {
+        opacity: 1;
+      }
+
+      100% {
+        opacity: 0;
+      }
+    }
+    .load {
+      display: grid;
+      place-items: center;
+      width: 10rem;
+      height: 10rem;
+      color: white;
+      text-align: center;
+      border-radius: 50%;
+      animation: load 1s linear infinite;
+      font-family: monospace;
+    }
+
+    @keyframes load {
+      0% {
+        box-shadow: 3px 3px 0 0 #fff, 6px 6px 10px 0 #fff;
+      }
+
+      25% {
+        box-shadow: -3px 3px 0 0 #0015FF, -6px 6px 10px 0 #0015FF;
+      }
+
+      50% {
+        box-shadow: -3px -3px 0 0 #FF0000, -6px -6px 10px 0 #FF0000;
+      }
+
+      75% {
+        box-shadow: 3px -3px 0 0 #FFEB00, 6px -6px 10px 0 #FFEB00;
+      }
+
+      100% {
+        box-shadow: 3px 3px 0 0 #00FF80, 6px 6px 10px 0 #00FF80;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div id="box">
+    <div class="load">loading...</div>
+  </div>
+</body>
+
+</html>

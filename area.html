@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Area of triangle-by it's coordinate</title>
+</head>
+
+<body>
+  <div oncanplaythrough="Symbol">
+    <center>Enter the coordinates To Find area</center><br />
+    <center>
+      X1<input type="text" id="x1">
+      Y1<input type="text" id="y1"><br>
+      X2<input type="text" id="x2">
+      Y2<input type="text" id="y2"><br>
+      X3<input type="text" id="x3">
+      Y3<input type="text" id="y3"><br><br>
+      <button onclick="area()">Get Area</button>
+      <div id="get">Get area here</div>
+    </center>
+  </div><br />
+  <hr />
+  <hr /><br />
+  <div>
+    <center>Enter the coordinates To get Distance</center><br />
+    <center>
+      X1<input type="text" id="z1">
+      Y1<input type="text" id="w1"><br />
+      X2<input type="text" id="z2">
+      Y2<input type="text" id="w2"><br /><br />
+      <input type="button" value="Get Distance" onclick="dist()">
+      <div id="val">Get Distance Here <br /></div>
+    </center>
+  </div>
+  <script>
+    let area = () => {
+      let x1 = document.getElementById('x1').value;
+      let a1 = x1.split('');
+      let y1 = document.getElementById('y1').value;
+      let b1 = y1.split('');
+      let x2 = document.getElementById('x2').value;
+      let a2 = x2.split('');
+      let y2 = document.getElementById('y2').value;
+      let b2 = y2.split('');
+      let x3 = document.getElementById('x3').value;
+      let a3 = x3.split('');
+      let y3 = document.getElementById('y3').value;
+      let b3 = y3.split('');
+
+      let val = document.getElementById('get');
+      if (x1.length == 0 || y1.length == 0 || x2.length == 0 || y2.length == 0 || x3.length == 0 || y3.length == 0) {
+        alert("Enter All The Values!")
+      }
+
+      else {
+        if (a1.includes("√")) {
+          if ((a1.length - 1) - a1.indexOf("√") == 0) {
+            alert("Type a right no.");
+          }
+          else {
+            if (a1.indexOf("√") == 0) {
+              a1.splice(a1.indexOf("√"), 1);
+              let a = Math.sqrt(a1.join(""));
+              val.innerHTML = "√"+Math.abs((a * (y2 - y3) + x2 * (y3 - y1) + x3 * (y1 - y2)) / 2)**2 +" sq.unit" 
+            }
+          }
+        }
+        else {
+          val.innerHTML = (x1 * (y2 - y3) + x2 * (y3 - y1) + x3 * (y1 - y2)) / 2 + " sq.unit"
+        }
+      }
+    }
+    let dist = () => {
+      let z1 = document.getElementById('z1').value;
+      let w1 = document.getElementById('w1').value;
+      let z2 = document.getElementById('z2').value;
+      let w2 = document.getElementById('w2').value;
+
+      let val1 = document.getElementById('val');
+
+
+      if (z1.length == 0 || w1.length == 0 || z2.length == 0 || w2.length == 0) { alert("Enter All The Values!") }
+
+      else {
+        let dist = (z1 - z2) ** 2 + (w1 - w2) ** 2;
+        val1.innerText = `√${dist} unit`;
+        for (i = 1; i <= Math.sqrt(dist); i++) {
+          if (dist == i ** 2) {
+            val1.innerHTML = i + " unit";
+          }
+        }
+      }
+    }
+  </script>
+</body>
+
+</html>

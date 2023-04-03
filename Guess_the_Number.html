@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Guess The Number Between 1 and 1000</title>
+</head>
+
+<body>
+  <h1>Guess The Number Between 1 and 1000</h1>
+  <input type="number" id="num">
+  <input type="button" value="Guess" onclick="game()">
+  <div id="val"></div>
+  <script type="text/javascript" charset="utf-8">
+    //var y = Math.round(Math.random() * 999) + 1;
+    var y = Math.floor((Math.random()*1000)+1) ;
+    alert("start")
+    var guess = 1;
+    let game = () => {
+      var val = document.getElementById('val');
+      var n = document.getElementById("num").value;
+      if (n > y && guess == 10)
+      {
+        guess++;
+        val.innerHTML = "OOPS SORRY!! TRY A SMALLER NUMBER. I think:'Tumse Na Hopayega!'";
+      }
+      else if (n < y && guess == 10)
+      {
+        guess++;
+        val.innerHTML = "OOPS SORRY!! TRY A greater NUMBER. I think:'Tumse Na Hopayega!'";
+      }
+      else if (n < y)
+      {
+        guess++;
+        val.innerHTML = "OOPS SORRY!! TRY A GREATER NUMBER";
+      }
+      if (y-n == 1 || n + 1 == y) {
+        guess++;
+        val.innerHTML = "You are too close!";
+      }
+      else if (n > y)
+      {
+        guess++;
+        val.innerHTML = "OOPS SORRY!! TRY A SMALLER NUMBER";
+      }
+      else if (n == y)
+      {
+        val.innerHTML = "CONGRATULATIONS!!! YOU GUESSED IT RIGHT IN " +
+          guess + " GUESS!";
+  
+      }
+    }
+  </script>
+</body>
+
+</html>

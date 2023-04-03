@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Clock</title>
+  <style type="text/css" media="all">
+  *{margin: 0;padding: 0;box-sizing: border-box}
+    #contain {
+      position: relative;
+      margin: auto;
+      height: 300px;
+      width: 300px;
+    }
+
+    #hour,
+    #minute,
+    #second {
+      position: absolute;
+      border-radius: 10px;
+      transform-origin: bottom;
+    }
+
+    #hour {
+      width: 3.5%;
+      height: 23%;
+      top: 27%;
+      left: 48.77%;
+      background-color: #3F3F3F;
+    }
+
+    #minute {
+      width: 1.8%;
+      height: 37%;
+      top: 13%;
+      left: 49.55%;
+      background: #232323;
+
+    }
+
+    #second {
+      width: .5%;
+      height: 40%;
+      top: 9%;
+      left: 50.18%;
+      background-color: red;
+    }
+
+    #center {
+      position: absolute;
+      height: 20px;
+      width: 20px;
+      border-radius: 50%;
+      background-color: black;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%,-50%)
+    }
+  </style>
+</head>
+
+<body>
+  <h1 style="border: 2px solid grey; border-radius: 20px; padding: 10px 0px;">
+    
+    <center style="border: 2px solid black; border-radius: 200px;padding: 15px">
+      Find your time! It's invisible</center>
+  </h1>
+  <div id="contain">
+    <div id="hour"> </div>
+    <div id="minute"> </div>
+    <div id="second"> </div>
+    <div id="center"> </div>
+  </div>
+  <script>
+    setInterval(() => {
+      d = new Date();
+      htime = d.getHours();
+      mtime = d.getMinutes();
+      stime = d.getSeconds();
+      hrotation = 30 * htime + mtime / 2;
+      mrotation = 6 * mtime;
+      srotation = 6 * stime;
+  
+      hour.style.transform = `rotate(${hrotation}deg)`;
+      minute.style.transform = `rotate(${mrotation}deg)`;
+      second.style.transform = `rotate(${srotation}deg)`;
+    }, 1000);
+  </script>
+</body>
+
+</html>

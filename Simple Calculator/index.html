@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Calculator</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+
+    * {
+      margin: 0;
+    }
+
+    header {
+      background: gray;
+      padding:10px;
+      box-shadow:0 4px 10px #8B8B8B
+    }
+
+    h1 {
+      color: #D4F316;
+      font-family: 'Lobster';
+      font-size: 4.5rem;
+      width: 850px;
+      margin: 50px;
+      background-color: #1616F3;
+      border-radius: 25px;
+      box-shadow: 0 20px 15px -10px gray
+    }
+
+    .contain {
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    .cal {
+      background-color: #2E2E2E;
+      padding: 20px;
+      border-radius: 20px;
+      width: 665px;
+      height: 670px;
+      margin: 30px;
+      box-shadow:0 0 50px 10px #A6A6A6
+    }
+
+    input {
+      background: #C9FFC5;
+      font-size: 50px;
+      width: 650px;
+      height: 110px;
+      margin: 10px 0px 20px 0px;
+      border: 2px solid black;
+      border-radius: 15px;
+      outline: none;
+    }
+
+    button {
+      outline: none;
+      font-size: 60px;
+      background: #BBB;
+      width: 150px;
+      height: 90px;
+      border-radius: 10px;
+      margin: 6px;
+    }
+button:active{
+  background: #6A6a6a;
+}
+    .nav {
+      background-color: #00FFF2;
+      border-radius: 100px;
+      height: 100px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .nav ul {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .nav li {
+      list-style: none;
+      font-family: cursive;
+      padding: 30px;
+
+    }
+
+
+    .nav li a {
+      text-decoration: none;
+      color: #000;
+      font-size: 40px;
+      font-weight: bold;
+    }
+
+    ul li :hover {
+      color: blue;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <nav class="nav">
+      <ul>
+        <li><a href="http://11408506.456725.renderforestsites.com">Home </a></li>
+        <li><a href="http://11408506.456725.renderforestsites.com">Contact me</a> </li>
+        <li><a href="https://www.youtube.com/channel/UCwGd9Wx3ZU3wMkU7gkGyr5g">About me </a> </li>
+        <li><a href="https://www.youtube.com/channel/UCwGd9Wx3ZU3wMkU7gkGyr5g">Services</a> </li>
+      </ul>
+    </nav>
+  </header>
+  <div class="contain">
+    <h1> Simple Calculator</h1>
+    <div class="cal">
+      <input type="text" name="screen" id="screen" placeholder="0" />
+      <table>
+        <tr>
+          <td><button>9</button></td>
+          <td><button>8</button></td>
+          <td><button>7</button></td>
+          <td><button>C</button></td>
+        </tr>
+        <tr>
+          <td><button>6</button></td>
+          <td><button>5</button></td>
+          <td><button>4</button></td>
+          <td><button>-</button></td>
+        </tr>
+        <tr>
+          <td><button>3</button></td>
+          <td><button>2</button></td>
+          <td><button>1</button></td>
+          <td><button>*</button></td>
+        </tr>
+        <tr>
+          <td><button>,</button></td>
+          <td><button>0</button></td>
+          <td><button>.</button></td>
+          <td><button>/</button></td>
+        </tr>
+        <tr>
+          <td><button>00</button></td>
+          <td><button>000</button></td>
+          <td><button>+</button></td>
+          <td><button>=</button></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</body>
+<script src="main.js"></script>
+
+</html>

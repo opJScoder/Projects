@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Canvas</title>
+</head>
+
+<body style="width: 100%;height: 100vh;background: darkslategray;display: flex;justify-content: center;align-items: center;">
+  <canvas id="canva" style="border: 2px solid white">
+  </canvas>
+  <input type="range" name="range" id="range" min="0" max="400" oninput="move()" value="0"/>
+  <script type="text/javascript" charset="utf-8">
+    const range = document.getElementById('range').value;
+    const canvas = document.getElementById('canva');
+    const ctx = canvas.getContext('2d');
+    // Width and  Height
+    const width = 400;
+    const height = 400;
+    let Pwidth = 50;
+    let Pheight = 10;
+    canvas.width = width;
+    canvas.height = height;
+    // Background
+    ctx.fillStyle = 'black';
+    ctx.fillRect(0, 0, width, height);
+    // Paddle
+    ctx.fillStyle = 'white';
+    let subWidth = width - Pwidth;
+    ctx.fillRect(subWidth / 2, 10, Pwidth, Pheight);
+    ctx.fillStyle = 'white';
+    subHeight = height - Pheight - 10;
+    ctx.fillRect(subWidth / 2, subHeight, Pwidth, Pheight);
+    // Center Line
+    ctx.beginPath();
+    ctx.setLineDash([5]); //only top Bruh
+    ctx.moveTo(0, height / 2);
+    ctx.lineTo(width, height / 2);
+    ctx.strokeStyle = 'white';
+    ctx.stroke();
+    // Center Ball
+    const radius = 10;
+    ctx.beginPath();
+
+      ctx.arc(200, 200, radius, .000999, false);
+    function move() {
+          ctx.fillStyle = 'blue'
+
+    }
+    ctx.fillStyle = 'white'
+    ctx.fill();
+    //Points
+    ctx.font = '32px monospace';
+    ctx.fillText(11, 20, height / 2 - 20);
+    ctx.fillText("5", 20, height / 2 + 40);
+  </script>
+</body>
+
+</html>
