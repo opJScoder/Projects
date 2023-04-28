@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Snake! Water! Gun!</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      color: #000753;
+      font-family: sans-serif;
+    }
+
+    body {
+      width: 100%;
+      height: 100vh;
+      background: radial-gradient(#C5CAFF, #5F6CFF);
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      position: relative;
+    }
+
+    h1 {
+      text-align: center;
+      border: 2px solid #000753;
+      padding: 20px;
+      border-radius: 20px;
+      background: #E3E5FF82;
+      margin-top: 50px;
+      width: 80%
+    }
+
+    #div {
+      display: flex;
+      margin-top: 200px;
+      justify-content: center;
+      align-items: center;
+      width: 90%;
+    }
+
+    .btn {
+      width: 300px;
+      height: 90px;
+      border-radius: 20px;
+      font-size: 23px;
+      background: radial-gradient(#C5CAFF, #5F6CFF);
+      font-family: monospace;
+      font-weight: 5000;
+      outline: none;
+      margin: 20px;
+    }
+
+    main {
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(#C5CAFF, #5F6CFF);
+      position: absolute;
+      top: 0;
+      left: 0;
+      transform: scale(1);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transform: scale(0);
+      opacity: 0;
+      transition: all .2s linear;
+    }
+
+    main h1 {
+      width: 98.5%;
+      height: 110px;
+      margin: 10px;
+      padding: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    #p {
+      width: 100%;
+      font-size: 35px;
+    }
+
+    .btn1 {
+      width: 50px;
+      height: 50px;
+      margin: 0;
+      right: 10px;
+      border-radius: 52px;
+    }
+
+    .btn2 {
+      margin-top: 200px;
+      width: auto;
+      height: auto;
+      padding: 10px 20px
+    }
+
+    #play {
+      width: 88%;
+      background: #CFCFCF;
+      margin: 20px;
+      border: 5px ridge black;
+      border-radius: 20px;
+      display: none;
+      align-items: center;
+      flex-direction: column;
+      padding: 15px;
+    }
+
+    .sub {
+      width: 50%;
+      height: 250px;
+      padding: 20px;
+      border: 3px outset #888;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      border-radius: 20px;
+      height: 80%;
+      margin: 10px;
+      position: relative;
+    }
+
+    .res {
+      font-size: 55px
+    }
+
+    .win {
+      border: 2px solid green;
+      padding: 10px;
+      margin: 10px;
+      border-radius: 20px;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>
+    WELCOME TO
+    🐍 -
+    🌊 -
+    🔫
+    GAME
+  </h1>
+  <div id="div">
+    <button class="btn" onclick="play()">START MATCH</button>
+    <button class="btn" onclick="alert(`GUIDE:-\nThere are 3 entities 'SNAKE', 'WATER', 'GUN'.\n• SNAKE can defeat WATER by dinking it.\n• WATER can defeat GUN by sinking it in WATER.\n• GUN can defeat SNAKE by shooting it.\n\nRULES:-\n1. You have fight against computer.\n2. This Game is with 3 rounds.\n3. You have to win atleast 2 rounds to win the match.`)">GUIDE & RULES</button>
+  </div>
+  <main>
+    <h1>
+      <p id="p">Don't refresh!</p><button class="btn1 btn" onclick="back()">×</button>
+    </h1>
+    <div id="play">
+      <h3 id="round" style="border-bottom: 2px solid green;margin: 10px">ROUND 1</h3>
+      <div style="display: flex;width: 100%;height: 100%;align-items: center;justify-content: space-evenly">
+        <div class="sub" id="cpu">
+          COMPUTER : <div class="res" id="cr"></div>
+        </div>V/S
+        <div class="sub" id="user" style="flex-direction: row-reverse">
+          <div id="user1"></div>
+          <div class="res" id="ur"></div>
+        </div>
+      </div>
+      <h3 id="result" class="win"></h3>
+    </div>
+    <center><button class="btn2 btn" id="butn" onclick="start()">START</button></center>
+  </main>
+  <script>
+    let main = document.getElementsByTagName('main')[0]
+    let btn = document.getElementById('butn')
+    let pl = document.getElementById('play')
+    let round = document.getElementById('round')
+    let i = 0,
+      us = 0,
+      cp = 0,
+      j = 0;
+    let cpu = document.getElementById('cpu')
+    let user = document.getElementById('user')
+    let res = document.getElementById('result')
+    let name = prompt(" ENTER YOUR PROPER NAME!", "JS")
+    document.getElementById("user1").innerHTML = ": " + name
+    let game = (a, cpu1) => {
+      document.getElementById('ur').innerHTML = a == 'S' ? '🐍' : a == 'W' ? '🌊' : '🔫';
+      document.getElementById('cr').innerHTML = cpu1 == 'S' ? '🐍' : cpu1 == 'W' ? '🌊' : '🔫';
+      if (a == 'S' && cpu1 == 'W') return name + " WIN THIS ROUND!"
+      else if (a == 'S' && cpu1 == 'G') return "COMPUTER WIN THIS ROUND!"
+      else if (a == 'W' && cpu1 == 'S') return "COMPUTER WIN THIS ROUND!"
+      else if (a == 'W' && cpu1 == 'G') return name + " WIN THIS ROUND!"
+      else if (a == 'G' && cpu1 == 'S') return name + " WIN THIS ROUND!"
+      else if (a == 'G' && cpu1 == 'W') return "COMPUTER WIN THIS ROUND!"
+      else return "ROUND TIED!"
+    }
+    let play = () => {
+      main.style.transform = 'scale(1)'
+      main.style.opacity = '1'
+      main.style.height = screen.height
+    }
+    let back = () => {
+      main.style.transform = 'scale(0)'
+      main.style.opacity = '0'
+    }
+    let next = () => {
+      round.innerHTML = i == 0 ? "ROUND 1" : i == 1 ? "ROUND 2" : "ROUND 3"
+      btn.innerHTML = i == 0 ? 'NEXT' : i == 1 ? 'NEXT' : 'PLAY AGAIN!'
+      res.innerHTML = b;
+      b == name + " WIN THIS ROUND!" ? (us++) + i++ : (cp++) + i++;
+    }
+    let start = () => {
+      if (j == 1) { win.remove(); j = 0 };
+      let a = prompt(` Choose one!\n\n Type:
+   -S for 🐍
+   -W for 🌊
+   -G for 🔫`);
+      if (a == null || a == "" || (a != 'S' && a != 'W' && a != 'G')) start();
+      else {
+        let cpu1 = ['S', 'W', 'G'][Math.floor(Math.random() * 3)]
+        b = game(a, cpu1);
+        if (b == "ROUND TIED!") {
+          alert("ROUND TIED!\n COMPUTER : " + (cpu1 == 'S' ? '🐍' : cpu1 == 'W' ? '🌊' : '🔫') + "\n" + name + " : " + (a == 'S' ? '🐍' : a == 'W' ? '🌊' : '🔫') + "\n\nSTART ROUND AGAIN!");
+          start();
+        }
+        else {
+          btn.style.margin = '0'
+          pl.style.display = "flex"
+          if (i == 0) next()
+          else if (i == 1) next()
+          else {
+            next();
+            win = document.createElement('h3')
+            win.innerHTML = (cp > us ? "COMPUTER" : name )+ " WIN THIS ENTIRE MATCH!"
+            win.classList.add('win')
+            pl.appendChild(win);
+            j = 1;
+            us = 0;
+            cp = 0;
+            i = 0;
+          }
+        }
+      }
+    }
+  </script>
+</body>
+
+</html>
