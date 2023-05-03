@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="icon" type="image/png" sizes="32x32" href="logo.png">
+  <title>Joke of the day!</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-size: 20px;
+      border-radius: 20px;
+    }
+
+    body {
+      width: 100%;
+      height: 100vh;
+      background: radial-gradient(#B6FFC6, #60FF84);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    .btn {
+      background: #9FC0FF;
+      padding: 10px 20px;
+      outline: none;
+      transition: all .02s linear;
+      user-select: none;
+      color: #F1F6FF;
+      margin: 30px;
+      text-shadow: 0 0 10px #000;
+      box-shadow: 0 0 20px #7EAAFF;
+    }
+
+    .btn:active {
+      transform: translateY(3px) scale(.97)
+    }
+
+    #joke {
+      background: #E4E4E4;
+      padding: 30px;
+      border: 2px solid gray;
+      margin: 30px;
+      box-shadow: 0 0 30px #111;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="joke"></div>
+  <button class="btn" onclick="joke()">Next Joke!</button>
+  <script>
+    alert("Are you sad today and want to make yourself laugh?\n-You are on the right place");
+    let jokes = [
+  "Why don't oysters give to charity? Because they're shellfish!",
+  "Why do cows wear bells? Because their horns don't work!",
+  "Why did the coffee file a police report? It got mugged!",
+  "What do you call a belt made of watches? A waist of time!",
+  "What's brown and sticky? A stick!",
+  "Why did the chicken cross the playground? To get to the other slide!",
+  "Why don't scientists trust atoms? Because they make up everything.",
+  "I told my wife she was drawing her eyebrows too high. She looked surprised.",
+  "I'm reading a book on anti-gravity. It's impossible to put down!",
+  "Why do chicken coops only have two doors? Because if they had four, they'd be a chicken sedan.",
+  "What do you call a fish wearing a bowtie? Sofishticated.",
+  "Why did the scarecrow win an award? Because he was outstanding in his field.",
+  "I used to play piano by ear, but now I use my hands.",
+  "What do you call fake spaghetti? An impasta.",
+  "What's the difference between a poorly dressed man on a trampoline and a well-dressed man on a trampoline? Attire.",
+  "Why don't skeletons fight each other? They don't have the guts.",
+  "I'm reading a book on the history of glue. I just can't seem to put it down.",
+  "Why don't ants get sick? Because they have tiny ant-bodies.",
+  "Why don't oysters share their pearls? Because they're shellfish.",
+  "I told my wife she was painting her eyelids too bright. She looked at me with a mascaraed expression.",
+  "What do you call a pile of cats? A meowtain.",
+  "Why did the tomato turn red? Because it saw the salad dressing.",
+  "Why can't bicycles stand up by themselves? Because they're two-tired.",
+  "What do you call a belt made out of watches? A waist of time.",
+  "Why did the math book look so sad? Because it had too many problems.",
+  "Why do fish live in salt water? Because pepper water makes them sneeze.",
+  "Why was the math book sad? Because it had too many problems.",
+  "Why can't you hear a pterodactyl go to the bathroom? Because the pee is silent.",
+  "I told my wife she was drawing her eyebrows too high. She looked surprised.",
+  "I'm on a whiskey diet. I've lost three days already.",
+  "I was going to make a joke about sodium, but Na.",
+  "What's brown and sticky? A stick.",
+  "Why don't scientists trust atoms? Because they make up everything.",
+  "What did one toilet say to the other toilet? You look flushed.",
+  "Why did the cookie go to the doctor? Because it felt crummy.",
+  "What do you call a fake noodle? An impasta."
+  ];
+    let div = document.getElementById('joke');
+    let i = [Math.floor(Math.random() * jokes.length)];
+    div.innerHTML = '"' + jokes[i] + '"'
+    let joke = () => {
+      i++;
+      div.innerHTML = '"' + jokes[i == jokes.length ? i = 0 : i] + '"'
+    }
+  </script>
+</body>
+
+</html>
