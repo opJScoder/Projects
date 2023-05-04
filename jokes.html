@@ -54,7 +54,10 @@
 
 <body>
   <div id="joke"></div>
-  <button class="btn" onclick="joke()">Next Joke!</button>
+  <div>
+    <button class="btn" onclick="pre()"> << </button>
+    <button class="btn" onclick="joke()">>></button>
+  </div>
   <script>
     alert("Are you sad today and want to make yourself laugh?\n-You are on the right place");
     let jokes = [
@@ -101,6 +104,10 @@
     let joke = () => {
       i++;
       div.innerHTML = '"' + jokes[i == jokes.length ? i = 0 : i] + '"'
+    }
+    let pre = () => {
+      i--;
+      div.innerHTML = '"' + jokes[i == -1 ? i = (jokes.length - 1) : i] + '"'
     }
   </script>
 </body>
