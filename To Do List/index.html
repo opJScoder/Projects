@@ -114,7 +114,7 @@
     let ol = document.querySelector('ol');
     let rem = document.getElementById("rem");
 
-    button.addEventListener('click', () => {
+    let save = () => {
       if (input.value.length > 0) {
         let li = document.createElement("li");
         li.appendChild(document.createTextNode(input.value));
@@ -123,14 +123,10 @@
       } else {
         alert("Enter something to add!")
       }
-    });
-    input.addEventListener("keypress", (js) => {
-      if (input.value.length > 0 && js.keyCode == 13) {
-        let li = document.createElement("li");
-        li.appendChild(document.createTextNode(input.value));
-        ol.appendChild(li);
-        input.value = "";
-      }
+    }
+    button.addEventListener('click', () => { save() });
+    input.addEventListener("keypress", (j) => {
+      if (j.keyCode == 13) save()
     });
   </script>
 </body>

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="logo.png">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>J-Savy</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      outline: none;
+      border-radius: 10px;
+      box-sizing: border-box;
+    }
+
+    header {
+      background-color: #575757;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      border-radius: 0
+    }
+
+    p {
+      color: #A5A5A5
+    }
+
+    main {
+      padding: 50px;
+    }
+
+    div {
+      display: flex;
+      margin-bottom: 50px;
+      justify-content: center;
+    }
+
+    input {
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      width: 500px;
+      margin: 5px;
+    }
+
+    button {
+      padding: 10px;
+      font-size: 16px;
+      border: none;
+      background-color: #A5A5A5;
+      color: white;
+      cursor: pointer;
+      margin: 2px;
+      min-width: 90px
+    }
+
+    a,
+    li {
+      margin-bottom: 10px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      background-color: #f2f2f2;
+      text-decoration: none;
+      overflow: hidden;
+    }
+
+    ol {
+      background: radial-gradient(#fff, #E2E2E2);
+      border: 2px solid #A5A5A5;
+      max-width: 700px;
+      margin: auto;
+      padding: 20px;
+      display: none;
+    }
+
+    .li {
+      padding: 0px;
+      flex-direction: column;
+      display: flex;
+    }
+
+    li {
+      margin: 30px;
+      position: relative;
+      overflow: visible;
+    }
+
+    li button {
+      position: absolute;
+      right: -40px;
+      margin: 0;
+      top: 0;
+      min-width: 30px;
+      height: 30px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: red;
+      font-size: larger;
+      padding: 0;
+    }
+
+    b {
+      margin: 0 0 8px 4px;
+      font-size: 20px;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Bookmark Saver!</h1>
+    <p>Saves your bookmarks safely!</p>
+  </header>
+  <main>
+    <div>
+      <input type="url" placeholder="Enter website URL">
+      <button onclick="save()">Save!</button>
+      <button onclick="deleted()">Delete!</button>
+    </div>
+    <ol id="saves"></ol>
+  </main>
+  <script>
+    let inp = document.querySelector('input');
+    let saves = document.getElementById('saves');
+    if (localStorage['a'] == undefined || localStorage['inp'] == undefined || localStorage['a'] == '' || localStorage['inp'] == '') {
+      saves.style.display = 'none'
+      localStorage.clear();
+      inputs = []
+    }
+    else {
+      inputs = JSON.parse(localStorage['inp']);
+      saves.style.display = 'block';
+      saves.innerHTML = localStorage['a']
+    }
+    let deleted = () => {
+      if (localStorage['a'] == '') alert("There is nothing to clear!");
+      else {
+        if (confirm('Do you want to delete all bookmarks?')) {
+          localStorage.clear();
+          inputs = []
+          saves.style.display = 'none';
+          saves.innerHTML = ''
+        }
+      }
+    }
+    let del = (x, y) => {
+      if (confirm(`Are you sure to delete '${x}': '${y}'?`)) {
+        event.target.parentNode.remove();
+        inputs.splice(inputs.indexOf(y), 1)
+        localStorage.clear();
+        localStorage['a'] = saves.innerHTML;
+        localStorage['inp'] = inputs
+        if (saves.firstElementChild == null) saves.style.display = 'none'
+      }
+    }
+    let save = () => {
+      let m = Array.from(inp.value).slice(0, 7);
+      let n = Array.from(inp.value).slice(0, 8);
+      let g = Array.from(inp.value).slice(0, 8);
+      if (inp.value == 0) alert("Enter the URL!")
+      else if (inputs.includes(inp.value)) {
+        alert(`You already added this '${inp.value}' in Bookmark No. ${inputs.indexOf(inp.value)+1}`)
+      }
+      else if (m != 'h,t,t,p,:,/,/' && n != 'h,t,t,p,s,:,/,/' && g != 'f,i,l,e,:,/,/,/') alert("Start your link with 'http://' or 'https://' or 'file:///'")
+      else if (inp.value.length < 12) alert("Enter a valid URL!")
+      else {
+        saves.style.display = 'block'
+        let js = () => {
+          let j = prompt(`Enter Title for '${inp.value}'! (Limit 18 characters)`);
+          return a = j == "" ? js() : j == null ? js() : j.length > 18 ? js() : j == undefined ? js() : j;
+        }
+        js();
+        saves.innerHTML += (`<li><button onclick="del('${a}','${inp.value}')">×</button><span class='li'><b>${a}:</b> <a href="${inp.value}" target="">${inp.value}</a><span></li>`);
+        localStorage.clear();
+        localStorage['a'] = saves.innerHTML;
+        inputs.push(inp.value)
+        localStorage['inp'] = JSON.stringify(inputs);
+      }
+      inp.value = ''
+    }
+    inp.addEventListener('keypress', (a) => {
+      if (a.keyCode == 13) save();
+    })
+  </script>
+</body>
+
+</html>

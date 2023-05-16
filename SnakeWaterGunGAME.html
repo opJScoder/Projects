@@ -183,7 +183,8 @@
     let cpu = document.getElementById('cpu')
     let user = document.getElementById('user')
     let res = document.getElementById('result')
-    let name = prompt(" ENTER YOUR PROPER NAME!", "JS")
+    let n = prompt(" ENTER YOUR PROPER NAME!", "JS")
+    let name = n==null ?"JS":n==''?"JS":n;
     document.getElementById("user1").innerHTML = ": " + name
     let game = (a, cpu1) => {
       document.getElementById('ur').innerHTML = a == 'S' ? '🐍' : a == 'W' ? '🌊' : '🔫';
@@ -212,7 +213,8 @@
       b == name + " WIN THIS ROUND!" ? (us++) + i++ : (cp++) + i++;
     }
     let start = () => {
-      if (j == 1) { win.remove(); j = 0 };
+      if (j == 1) { win.remove();
+        j = 0 };
       let a = prompt(` Choose one!\n\n Type:
    -S for 🐍
    -W for 🌊
@@ -233,7 +235,7 @@
           else {
             next();
             win = document.createElement('h3')
-            win.innerHTML = (cp > us ? "COMPUTER" : name )+ " WIN THIS ENTIRE MATCH!"
+            win.innerHTML = (cp > us ? "COMPUTER" : name) + " WIN THIS ENTIRE MATCH!"
             win.classList.add('win')
             pl.appendChild(win);
             j = 1;
