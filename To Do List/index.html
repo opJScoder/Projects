@@ -14,14 +14,14 @@
     }
 
     body {
-      height: 200vh
+      height: 100vh
     }
 
     h1 {
-      margin: 40px 0;
+      margin: 40px;
+      padding: 10px;
       font-weight: bold;
       font-family: monospace;
-      font-size: 3rem;
       border: 3px solid black;
       border-radius: 30px;
       text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
@@ -29,22 +29,11 @@
       background: #FEFEFEDE;
     }
 
-    p {
-      margin-top: 0;
-      margin-bottom: 30px;
-      font-size: 1.2rem;
-      text-shadow: .5px 1px 1.5px gray;
-    }
-
-    #r {
-      text-shadow: 0px 0px 1.5px #E70000B3;
-    }
-
     /* Input */
     .adder {
       display: flex;
       justify-content: center;
-      margin: auto;
+      margin: 50px auto;
     }
 
     input {
@@ -52,8 +41,8 @@
       outline: none;
       border-radius: 10px;
       text-align: left;
-      padding: 3px 5px;
-      width: 350px;
+      padding: 20px 10px;
+      max-width: 500px;
       place-self: center;
       margin-right: 10px;
       box-shadow: 0 3px 10px -2px gray;
@@ -61,29 +50,36 @@
       font-size: 1.1rem;
     }
 
-    #btn {
+    #btn,
+    #btn1 {
       border-radius: 5px;
       outline: none;
       border: 2px solid black;
-      padding: 3px;
       width: 60px;
-      height: 33px;
       background: #fff;
       box-shadow: 0 2px 10px 2px gray;
+      user-select: none;
+      margin: 4px;
     }
 
-    #btn:active {
+    #btn1 {
+      width: 100px
+    }
+
+    #btn:active,
+    #btn1:active {
       box-shadow: 0 3px 10px -2px gray;
     }
 
     /* Lists */
     .list {
       margin: auto;
-      width: 450px;
+      max-width: 560px;
     }
 
     li {
       text-align: left;
+      margin: 10px
     }
   </style>
 </head>
@@ -91,41 +87,63 @@
 <body>
   <div class="main">
     <h1>To Do List ✓</h1>
-    <p>
-      Ensure that you will not refresh this page. Unless you will lost everything!
-    </p>
-    <p id="r">
-      *-* Refresh to clear *-*
-    </p>
     <div class="adder">
       <input type="text" name="text" id="text" placeholder="Enter your TASK" />
-      <div id="btn">
+      <button id="btn">
         Add
-      </div>
+      </button>
+      <button id="btn1" onclick="del()">
+        Delete all!
+      </button>
     </div>
     <div class="list">
-      <ol>
-      </ol>
+      <ol></ol>
     </div>
   </div>
   <script>
     let button = document.getElementById('btn');
+    let btn = document.getElementById('btn1');
     let input = document.querySelector('input');
     let ol = document.querySelector('ol');
     let rem = document.getElementById("rem");
+    btn.style.display = 'none'
+
+    if (localStorage['a'] != undefined && localStorage['a'].length>0) {
+      ol.innerHTML = localStorage['a'];
+      btn.style.display = 'block'
+    }
+
+    let del = () => {
+      if (confirm('Do you really want to delete your tasks!')) {
+        localStorage.clear();
+        ol.innerHTML = ''
+        btn.style.display = 'none'
+      }
+    }
+
+    let dl = (i) => {
+      if (confirm(`Sure to delete - "${i}" ?`))
+      {
+        event.target.remove()
+        localStorage['a'] = ol.innerHTML
+        if (ol.innerHTML == '') { btn.style.display = 'none' }
+      }
+    }
 
     let save = () => {
       if (input.value.length > 0) {
-        let li = document.createElement("li");
-        li.appendChild(document.createTextNode(input.value));
-        ol.appendChild(li);
+        let li = `<li ondblclick="dl(\`${input.value}\`)">${input.value}</li>`;
+        ol.innerHTML += li
         input.value = "";
+        localStorage['a'] = ol.innerHTML;
+        btn.style.display = 'block'
       } else {
         alert("Enter something to add!")
       }
     }
-    button.addEventListener('click', () => { save() });
-    input.addEventListener("keypress", (j) => {
+    button.addEventListener('click', () => save());
+    input.addEventListener("keypress", j =>
+    {
       if (j.keyCode == 13) save()
     });
   </script>
