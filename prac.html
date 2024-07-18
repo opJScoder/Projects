@@ -257,7 +257,7 @@
       const loadingScreen = document.getElementById('loadingScreen');
       setTimeout(() => {
         loadingScreen.style.display = 'none';
-      }, 5000);
+      }, 000);
     });
     c = new Date()
     crnt = `${c.getFullYear()}-${String(c.getMonth() + 1).padStart(2, '0')}-${c.getDate()}`
@@ -277,6 +277,8 @@
       }
       var b = a.getDay();
       if (b == 2 || b == 4 || b == 5) {
+        re.style.padding = '25px';
+        re.style.textAlign = '';
         if (week % 2 == 0) {
           if (b == 2) phy();
           else if (b == 4) chem();
