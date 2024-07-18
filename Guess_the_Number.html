@@ -7,10 +7,51 @@
   <link rel="icon" type="image/png" sizes="32x32" href="logo.png">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Guess The Number Between 1 and 1000</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #006389;
+      text-align: center;
+      padding: 50px;
+    }
+
+    h1 {
+      color: #F4F4F4;
+    }
+
+    input {
+      font-size: 16px;
+      border-radius: 15px;
+    }
+
+    input[type="number"] {
+      padding: 10px;
+      width: 200px;
+      margin: 10px;
+    }
+
+    input[type="button"] {
+      padding: 10px 20px;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    input[type="button"]:hover {
+      background-color: #218838;
+    }
+
+    #val {
+      margin-top: 20px;
+      font-size: 18px;
+      color: #FFFFFF;
+    }
+  </style>
 </head>
 
 <body>
-  <h1>Guess The Number Between 1 and 1000</h1>
+  <h1>Guess The Number Between <br>[ 1 and 1000 ]</h1>
   <input type="number" id="num">
   <input type="button" value="Guess" onclick="game()">
   <div id="val"></div>
@@ -20,35 +61,37 @@
     let game = () => {
       var val = document.getElementById('val');
       var n = document.getElementById("num").value;
-      if (y - n == 1 || n - y == 1) {
+      if (y - n == 1 || n - y == 1 || y - n == 2 || n - y == 2 || y - n == 3 || n - y == 3) {
         guess++;
         val.innerHTML = "You are too close!";
       }
-      else if (n > y && guess == 10)
-      {
+      else if (n > y && guess == 10) {
         guess++;
-        val.innerHTML = "OOPS SORRY!! TRY A SMALLER NUMBER. I think:'Tumse Na Hopayega!'";
+        val.innerHTML = "TRY A SMALLER NUMBER.<br><br>I think:'Tumse Na Hopayega!'";
       }
-      else if (n < y && guess == 10)
-      {
+      else if (n < y && guess == 10) {
         guess++;
-        val.innerHTML = "OOPS SORRY!! TRY A greater NUMBER. I think:'Tumse Na Hopayega!'";
+        val.innerHTML = "TRY A GREATER NUMBER.<br><br>I think:'Tumse Na Hopayega!'";
       }
-      else if (n < y)
-      {
+      else if (n > y && guess == 11) {
         guess++;
-        val.innerHTML = "OOPS SORRY!! TRY A GREATER NUMBER";
+        val.innerHTML = "TRY A SMALLER NUMBER.<br><br>Sorry! Carry On! You can do it!!";
       }
-      else if (n > y)
-      {
+      else if (n < y && guess == 11) {
         guess++;
-        val.innerHTML = "OOPS SORRY!! TRY A SMALLER NUMBER";
+        val.innerHTML = "TRY A GREATER NUMBER.<br><br>Sorry! Carry On! You can do it!!";
       }
-      else
-      {
+      else if (n < y) {
         guess++;
-        val.innerHTML = "CONGRATULATIONS!!! YOU GUESSED IT RIGHT IN " + guess + " GUESS!";
-
+        val.innerHTML = "TRY A GREATER NUMBER!";
+      }
+      else if (n > y) {
+        guess++;
+        val.innerHTML = "TRY A SMALLER NUMBER!";
+      }
+      else {
+        guess++;
+        val.innerHTML = guess == 1 ? "CONGRATULATIONS!!!<br><br>YOU GUESSED IT RIGHT IN," + guess + " GUESS!" : "CONGRATULATIONS!!!<br><br>YOU GUESSED IT RIGHT IN, " + guess + " GUESSES!";
       }
     }
   </script>

@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="logo.png">
+
+  <title>Practical Schedule</title>
+  <style>
+    @font-face {
+      font-family: js2;
+      src: url('js2.ttf')
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      font-family: js2;
+    }
+
+
+    body {
+      background: radial-gradient(#123052, #0D1B2A);
+      color: #E0E1DD;
+      font-family: Arial, sans-serif;
+      height: 100vh;
+    }
+
+    .schedule-container {
+      background-color: #00000085;
+      border-radius: 10px;
+      height: 300px;
+      width: 400px;
+      box-shadow: 0 0 5px 0 #00B0FF, 0 0 50px 2px #0B0B0BA8;
+      border: 2px solid #00B0FF;
+      margin: auto;
+    }
+
+    .date-picker {
+      background-color: #00336F63;
+      border: none;
+      outline: none;
+      color: #E0E1DD;
+      border-radius: 10px 10px 0 0;
+      font-size: 16px;
+      cursor: pointer;
+      width: 300px;
+      height: 20%;
+      font-size: 2rem;
+      border-bottom: 2px ridge #00B0FF;
+      box-shadow: 0 0 5px 0 #00B0FF;
+      padding-left: 100px;
+      text-shadow: 0 0 3px #009FFF;
+    }
+
+    #schedule {
+      display: flex;
+      flex-direction: column;
+      align-content: center;
+      justify-content: center;
+      height: 236px;
+    }
+
+
+    h1 {
+      margin: 100px auto;
+      border-bottom: 2px solid #009FFF;
+      box-shadow: 0 10px 10px -10px #009FFF;
+      width: 461px;
+      padding: 5px 0;
+      text-shadow: 0 0 5px #000000
+    }
+
+    h2 {
+      padding-left: 25px;
+    }
+
+    #loadingScreen {
+      position: fixed;
+      top: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: #0D1B2A;
+      z-index: 1000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    #loadingScreen p {
+      font-size: 3rem;
+      color: #E0E1DD;
+      border-right: 2px solid #E0E1DD;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+
+    @keyframes typing {
+      0% {
+        width: 0px;
+      }
+
+      9% {
+        width: 0px;
+      }
+
+      10% {
+        width: 29px;
+      }
+
+      14% {
+        width: 29px;
+      }
+
+      15% {
+        width: 61px;
+      }
+
+      19% {
+        width: 61px;
+      }
+
+      20% {
+        width: 81px;
+      }
+
+      24% {
+        width: 81px;
+      }
+
+      25% {
+        width: 118px;
+      }
+
+      29% {
+        width: 118px;
+      }
+
+      30% {
+        width: 143px;
+      }
+
+      34% {
+        width: 143px;
+      }
+
+      35% {
+        width: 175px;
+      }
+
+      39% {
+        width: 175px;
+      }
+
+      40% {
+        width: 202px;
+      }
+
+      44% {
+        width: 202px;
+      }
+
+      45% {
+        width: 233px;
+      }
+
+      49% {
+        width: 233px;
+      }
+
+      50% {
+        width: 257px;
+      }
+
+      64% {
+        width: 257px;
+      }
+
+      65% {
+        width: 288px;
+      }
+
+      79% {
+        width: 288px;
+      }
+
+      80% {
+        width: 323px;
+      }
+
+      94% {
+        width: 323px;
+      }
+
+      95% {
+        width: 345px;
+      }
+
+      96% {
+        width: 345px;
+      }
+
+      97% {
+        width: 370px;
+      }
+
+      98% {
+        width: 370px;
+      }
+
+      100% {
+        width: 395px;
+      }
+    }
+
+    @keyframes blink {
+      50% {
+        border-color: transparent;
+      }
+    }
+
+    @keyframes fade {
+      0% {
+        opacity: 1;
+      }
+
+      100% {
+        opacity: 0;
+      }
+    }
+
+    #loadingScreen p.typing {
+      width: 395px;
+      text-shadow: 0 0 4px #FFFFFF;
+      animation: typing 3s linear, blink 1s step-end infinite, fade 1s 4s;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="loadingScreen">
+    <p class="typing">Hi! I am JS...</p>
+  </div>
+  <h1>|| PRACTICAL SCHEDULE ||</h1>
+  <div class="schedule-container">
+    <input type="date" class="date-picker" id="datePicker" placeholder="oo">
+    <div id="schedule">
+      <h2 id="res"></h2>
+    </div>
+  </div>
+  <script>
+    window.addEventListener('scroll', () => {
+      document.body.style.height = "";
+    })
+    window.addEventListener("load", () => {
+      const loadingScreen = document.getElementById('loadingScreen');
+      setTimeout(() => {
+        loadingScreen.style.display = 'none';
+      }, 5000);
+    });
+    c = new Date()
+    crnt = `${c.getFullYear()}-${String(c.getMonth() + 1).padStart(2, '0')}-${c.getDate()}`
+    document.getElementById('datePicker').value = crnt;
+
+    function getScheduleForDate(a) {
+      var a = new Date(a);
+      var d = new Date("January 1 2024").getTime(d);
+      var d1 = a.getTime(a);
+      var week = Math.floor(((((d1 - d) / 86400000) + 1) / 7) + 1);
+      let re = document.getElementById('res');
+      phy = () => {
+        re.innerHTML = "B1 : Physics Practical<br><br>B2 : Chemistry Practical"
+      }
+      chem = () => {
+        re.innerHTML = "B1 : Chemistry Practical<br><br>B2 : Physics Practical"
+      }
+      var b = a.getDay();
+      if (b == 2 || b == 4 || b == 5) {
+        if (week % 2 == 0) {
+          if (b == 2) phy();
+          else if (b == 4) chem();
+          else phy();
+        }
+        else {
+          if (b == 2) chem();
+          else if (b == 4) phy();
+          else chem();
+        }
+      }
+      else {
+        k = `${a.getFullYear()}-${String(a.getMonth() + 1).padStart(2, '0')}-${a.getDate()}`
+        crnt = `${c.getFullYear()}-${String(c.getMonth() + 1).padStart(2, '0')}-${c.getDate()}`
+        re.style.padding = 0;
+        re.style.textAlign = 'center';
+        if (crnt == k)
+          re.innerHTML = "No practicals Today!";
+        else
+          re.innerHTML = "No practicals on this day!";
+      }
+    }
+
+    document.getElementById("datePicker").addEventListener("change", function() {
+      const selectedDate = new Date(this.value);
+      getScheduleForDate(selectedDate);
+    });
+    getScheduleForDate(c);
+  </script>
+</body>
+
+</html>

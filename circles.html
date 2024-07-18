@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" type="image/png" sizes="32x32" href="logo.png">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>"Random" that amaze you!</title>
+  <title>"Random Circles" that amaze you!</title>
   <style type="text/css" media="all">
     * {
       padding: 0;
@@ -15,7 +15,7 @@
     }
 
     body {
-      background: #323029;
+      background: #292A32;
       width: 100%;
       height: 100vh;
       overflow: hidden;
@@ -46,19 +46,24 @@
 </head>
 
 <body>
+  <center style="color: whitesmoke;margin: 30px"></center>
   <script type="text/javascript" charset="utf-8">
     let body = document.querySelector('body');
-    window.addEventListener('mousemove', function(e) {
+    window.addEventListener('click', function(e) {
       let x = e.offsetX;
       let y = e.offsetY;
       let block = document.createElement('span');
       block.style.top = y + "px";
       block.style.left = x + "px";
-      let colour = ["red", "green", "blue", "yellow", 'skyblue', 'orange', 'pink', 'gray'];
+      let colour = ["red", "green", "blue", "yellow", 'skyblue', 'orange', 'pink', 'gray', '#FF0000', '#B1FF00', '#FF8200', '#FFEB00', '#CCFF00', '#A8FF00', '#2EFF00', '#00FF8A', '#00FFF9', '#0083FF', '#0025FF', '#5600FF', '#7B00FF', '#C600FF', '#FF00BA', '#FF0077', '#FF84BD', '#FF84CF', '#C884FF', '#8488FF', '#84B2FF', '#84D1FF', '#84FEFF', '#00FFA4', '#7FFF7D', '#7DFFA5', '#C6FF7D', '#FFFD7A', '#FFE07A', '#FFA37A', '#FF7A7A', '#980000', '#986300', '#989500', '#7B9800', '#4A9800', '#199800', '#00984B', '#00987C', '#006C98', '#001B98', '#540098', '#920098', '#98005A', '#980040'];
       let c = colour[Math.floor(Math.random() * colour.length)];
       let c1 = colour[Math.floor(Math.random() * colour.length)];
       let c2 = colour[Math.floor(Math.random() * colour.length)];
-      block.style.background='radial-gradient('+c+','+c1+','+c2+')';
+      let c3 = colour[Math.floor(Math.random() * colour.length)];
+      let c4 = colour[Math.floor(Math.random() * colour.length)];
+      let c5 = colour[Math.floor(Math.random() * colour.length)];
+      let c6 = colour[Math.floor(Math.random() * colour.length)];
+      block.style.background = 'radial-gradient(' + c + ',' + c1 + ',' + c2 + ',' + c3 + ',' + c4 + ',' + c5 + ',' + c6 + ')';
       body.appendChild(block);
       setTimeout(function() {
         block.remove();

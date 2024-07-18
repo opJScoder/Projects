@@ -5,8 +5,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="icon" type="image/png" sizes="32x32" href="logo.png">
+
   <title>Check✔️ whether prime or not</title>
-  
+
   <style type="text/css" media="all">
     * {
       margin: 0;
@@ -20,8 +22,9 @@
       justify-content: center;
       align-items: center;
       flex-direction: column;
-      background: linear-gradient(to right, #1D2B64, #fff, #F8CDDA);
+      background: linear-gradient(-90deg, #F8CDDA, #fff, #1D2B64);
       padding: 40px 0 100px 0;
+      height: 100vh;
     }
 
     #num {
@@ -100,7 +103,7 @@
 </head>
 
 <body>
-  <main>
+  <main id="man">
     <h1 style="font-size:2rem;font-weight:bold">Prime Numbers</h1>
     <p style="font-size:.8rem">-made by js</p>
     <input type="number" id="num" placeholder="Enter the value" />
@@ -113,11 +116,16 @@
     <div id="val3" class="a b">Get all the Prime numbers less than entered number, here!</div>
   </main>
   <script type="text/javascript" charset="utf-8">
+    window.addEventListener('scroll', () => {
+      // alert('op');
+      document.getElementById('man').style.height = "fit-content";
+    })
+
     let check = () => {
       let n = document.getElementById('num').value;
       let a = n.length;
       if (a > 5) { alert("What the use?") }
-      else if (a == 0) { alert("Enter the values!") }
+      else if (a == 0) { alert("Enter the value!") }
       else if (n <= 0) { alert("Not now!") }
       else if (n == 1) { alert("1 is neither a prime nor a composite number! It's Unique") }
       else {
@@ -131,7 +139,7 @@
             break;
           }
         }
-        if (c == 0)  var ans = `${n} is a prime number!` ;
+        if (c == 0) var ans = `${n} is a prime number!`;
         document.getElementById('val').innerHTML = ans;
 
 
@@ -139,7 +147,7 @@
 
         var ans1 = [];
         for (let i = 1; i <= n; i++) {
-          if (n % i == 0)  ans1.push(i) 
+          if (n % i == 0) ans1.push(i)
         }
         var ans1 = ans1.join(', ');
         document.getElementById('val1').innerHTML = "Factor(s):-<br><br>" + ans1;
@@ -158,7 +166,8 @@
         document.getElementById('val3').innerHTML = `Total no. of Prime Number(s) less than or equal to ` + n + ` :- ${ans3.length}<br>Prime Number(s) less than or equal to ` + n + " :-<br><br>" + ans2;
 
         // Prime Factors:-
-        var factors = [], i = 2;
+        var factors = [],
+          i = 2;
         while (n >= 2) {
           if (n % i == 0) {
             factors.push(i);

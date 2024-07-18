@@ -11,97 +11,88 @@
     * {
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
     }
 
     body {
-      /* background-image: linear-gradient(to bottom, #07C5E5 0%, #E3E235 100%); */
-      /* opacity: 0.4; */
+      background-color: #121212;
+      color: #ffffff;
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
     }
 
     .contain {
-      width: 350px;
-      padding: 0px 10px;
-      margin: 0px auto;
+      padding: 10px;
+      background-color: #1e1e1e;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     }
 
-    /* .div{
-      border: 2px solid;
-      border-radius: 10px;
-      background-color: #3B3B3B;
-      width: 372px
-    } */
-
     table {
-      margin: 0px 5px 5px 5px;
+      width: 100%;
+      margin: 5px 0;
     }
 
     button {
       width: 70px;
       height: 70px;
       font-size: 25px;
-      background-color: #bbbbbb;
-      color: black;
-      border: 3px #b9b outset;
+      background-color: #3a3a3a;
+      color: white;
+      border: 2px solid #3a3a3a;
       border-radius: 10px;
-      /* outline: none; */
       cursor: pointer;
-
+      transition: background-color 0.3s ease;
     }
-
-    .t {
-      height: 60px;
-      background-color: #757575;
-    }
-
-    .q {
-      height: 60px;
-      background-color: #6BFF61;
-      color: black;
-    }
-
-    #c {
-      background-color: #FF3232;
-      height: 122px;
-      font-weight: bolder;
-    }
-
 
     button:hover {
-      background-color: #B5B5BF;
-      box-shadow: none;
-      /* padding-bottom: 5px; */
-      /* border: 3px double; */
+      background-color: #575757;
     }
 
     button:active {
-      background-color: #A7A7A7;
-      box-shadow: none;
-      padding-top: 5px;
-      border: 3px solid #454546;
+      background-color: #4a4a4a;
+    }
 
+    #c {
+      background-color: #e57373;
+      font-weight: bolder;
+      color: black;
+      height: 140px;
+    }
+
+    #c:hover {
+      background-color: #ef5350;
+    }
+
+    #c:active {
+      background-color: #d32f2f;
     }
 
     #screen {
-      border: 3px inset;
+      border: 3px inset #3a3a3a;
       margin-bottom: 10px;
-
+      padding: 10px;
+      background-color: #2c2c2c;
+      border-radius: 10px;
     }
 
     #h1,
     #s1 {
-      width: 350px;
+      width: 100%;
       height: 30px;
-      padding: 2px;
-      padding-top: 4px;
-      background-color: powderblue;
+      padding: 2px 10px;
+      background-color: #2c2c2c;
       font-size: 25px;
       font-family: sans-serif;
       font-weight: bold;
       text-align: right;
       overflow: hidden;
-      text-shadow: 2px 2px 1px #2D3DF0;
-      color: black;
-
+      color: #ffffff;
+      margin-bottom: 5px;
     }
 
     #s1 {
@@ -112,100 +103,193 @@
 
 <body>
   <div class="contain">
-    <div class="div">
-      <table>
-        <caption>
-          <pre> </bsp> </caption>
-          <tr>
-            <td colspan="5"> 
-            <div id="screen">
-              <div id="s1">
-                <small><small><span></span></small></small>
-              </div>
-              <div id="h1">
-                <small><small><span></span></small></small>
-              </div>
-            </div>
-            </td>
-          </tr>
-          
-          <tr>
-            <td><button class="q" onclick='getElementById("h1").innerHTML=bsp()'>Del</button></td>
-               <td><button class="q" onclick='getElementById("h1").innerHTML=mp()'>M+</button></td>
-                  <td><button class="q" onclick='getElementById("h1").innerHTML=mr()'>MR</button></td>
-                     <td><button class="q" onclick='getElementById("h1").innerHTML=maths("rand")'><small>Rnd</small></button></td>
-                     
-                     <td rowspan="2"> <button id="c" class="q" onclick='getElementById("h1").innerHTML=c("")'> C </button></td>
-          </tr>
-          
-          <tr>
-                 <td><button class="t" onclick='getElementById("h1").innerHTML=maths("res")'><sup>1</sup>/<sub>10</sub></button></td>
-                                      <td><button class="t" onclick='getElementById("h1").innerHTML=maths("logTen")'><small>log10</small></button></td>
-                                                           <td><button class="t" onclick='getElementById("h1").innerHTML=maths("ln")'>ln</button></td>
-                                                                                <td><button class="t" onclick='getElementById("h1").innerHTML=PE("E")'>e</button></td>
-          </tr>                       
-          <tr>
-                    <td><button class="t" onclick='getElementById("h1").innerHTML=maths("sine")'>sin</button></td>
-                      <td><button class="t" onclick='getElementById("h1").innerHTML=maths("cosine")'>cos</button></td>
-                        <td><button class="t" onclick='getElementById("h1").innerHTML=maths("tangent")'>tan</button></td>
-                          <td><button class="t" onclick='getElementById("h1").innerHTML=PE("PI")'>π</button></td>
-                            <td><button class="t" onclick='getElementById("h1").innerHTML=percent()'>%</button></td>
-          </tr>
-          
-            <tr>
-              <td><button class="t" onclick='getElementById("h1").innerHTML=maths("fact")'>n!</button></td>
-              <td><button class="t" onclick='getElementById("h1").innerHTML=digit("%")'>Mod</button></td>
-              <td><button class="t" onclick='getElementById("h1").innerHTML=power("^")'>x <sup>y</sup></button></td>
-              <td><button class="t" onclick='getElementById("h1").innerHTML=power("√ ")'><sup>y</sup>√x</button></td>
-              <td><button class="t" onclick='getElementById("h1").innerHTML=maths("cubert")'><sup>3</sup>√</button></td>
-            </tr>
-            
-              <tr>
-                <td><button class="t" onclick='getElementById("h1").innerHTML=digit("(")'>(</button></td>
-                <td><button class="t" onclick='getElementById("h1").innerHTML=digit(")")'>)</button></td>
-                <td><button class="t" onclick='getElementById("h1").innerHTML=base("bin")'>bin</button></td>
-                <td><button class="t" onclick='getElementById("h1").innerHTML=base("oct")'>oct</button></td>
-                <td><button class="t"onclick='getElementById("h1").innerHTML=base("hex")'>hex</button></td>
-              </tr>
-            
-              <tr>
-                <td><button onclick='getElementById("h1").innerHTML=digit("7")'>7</button></td>
-                <td><button onclick='getElementById("h1").innerHTML=digit("8")'>8</button></td>
-                <td><button onclick='getElementById("h1").innerHTML=digit("9")'>9</button></td>
-                <td><button onclick='getElementById("h1").innerHTML=operators("+")'>+</button></td>
-                <td><button onclick='getElementById("h1").innerHTML=maths("negpos")'>-/+</button></td>
-              </tr>
-              
-                <tr>
-                  <td><button onclick='getElementById("h1").innerHTML=digit("4")'>4</button></td>
-                  <td><button onclick='getElementById("h1").innerHTML=digit("5")'>5</button></td>
-                  <td><button onclick='getElementById("h1").innerHTML=digit("7")'>6</button></td>
-                  <td><button onclick='getElementById("h1").innerHTML=operators("-")'>-</button></td>
-                  <td><button onclick='getElementById("h1").innerHTML=maths("sqrt")'>√</button></td>
-                </tr>
-                
-                  <tr>
-                    <td><button onclick='getElementById("h1").innerHTML=digit("1")'>1</button></td>
-                    <td><button onclick='getElementById("h1").innerHTML=digit("2")'>2</button></td>
-                    <td><button onclick='getElementById("h1").innerHTML=digit("3")'>3</button></td>
-                    <td><button onclick='getElementById("h1").innerHTML=operators("/")'>/</button></td>
-                    <td><button onclick='getElementById("h1").innerHTML=maths("cube")'>x <sup>3</sup></button></td>
-                  </tr>
-                  
-                    <tr>
-                      <td><button onclick='getElementById("h1").innerHTML=dot(".")'>.</button></td>
-                      <td><button onclick='getElementById("h1").innerHTML=digit("0")'>0</button></td>
-                      <td><button onclick='getElementById("h1").innerHTML=equal()'>=</button></td>
-                      <td><button onclick='getElementById("h1").innerHTML=operators("*")'>x</button></td>
-                  <td><button onclick='getElementById("h1").innerHTML=maths("sur")'>x <sup>2</sup></button></td>
-                    </tr>
-              
-      </table>
+    <div id="screen">
+      <div id="s1">
+        <small><small><span id="secondary-display"></span></small></small>
+      </div>
+      <div id="h1">
+        <small><small><span id="main-display"></span></small></small>
+      </div>
     </div>
+    <table>
+      <tr>
+        <td><button class="q" onclick="del()">Del</button></td>
+        <td><button class="q" onclick="memoryAdd()">M+</button></td>
+        <td><button class="q" onclick="memoryRecall()">MR</button></td>
+        <td><button class="q" onclick="insert('random()')"><small>Rnd</small></button></td>
+        <td rowspan="2"><button id="c" class="q" onclick="clearDisplay()">C</button></td>
+      </tr>
+      <tr>
+        <td><button class="t" onclick="insert('(1/10)')"><sup>1</sup>/<sub>10</sub></button></td>
+        <td><button class="t" onclick="insert('log10(')">log10</button></td>
+        <td><button class="t" onclick="insert('ln(')">ln</button></td>
+        <td><button class="t" onclick="insert('e')">e</button></td>
+      </tr>
+      <tr>
+        <td><button class="t" onclick="insert('sin(')">sin</button></td>
+        <td><button class="t" onclick="insert('cos(')">cos</button></td>
+        <td><button class="t" onclick="insert('tan(')">tan</button></td>
+        <td><button class="t" onclick="insert('π')">π</button></td>
+        <td><button class="t" onclick="insert('%')">%</button></td>
+      </tr>
+      <tr>
+        <td><button class="t" onclick="insert('factorial(')">n!</button></td>
+        <td><button class="t" onclick="insert(' % ')">Mod</button></td>
+        <td><button class="t" onclick="insert('^')">x<sup>y</sup></button></td>
+        <td><button class="t" onclick="insert('root(')"><sup>y</sup>√x</button></td>
+        <td><button class="t" onclick="insert('cbrt(')"><sup>3</sup>√</button></td>
+      </tr>
+      <tr>
+        <td><button class="t" onclick="insert('(')">(</button></td>
+        <td><button class="t" onclick="insert(')')">)</button></td>
+        <td><button class="t" onclick="insert('bin(')">bin</button></td>
+        <td><button class="t" onclick="insert('oct(')">oct</button></td>
+        <td><button class="t" onclick="insert('hex(')">hex</button></td>
+      </tr>
+      <tr>
+        <td><button onclick="insert('7')">7</button></td>
+        <td><button onclick="insert('8')">8</button></td>
+        <td><button onclick="insert('9')">9</button></td>
+        <td><button onclick="insert('+')">+</button></td>
+        <td><button onclick="insert('(-')">-/+</button></td>
+      </tr>
+      <tr>
+        <td><button onclick="insert('4')">4</button></td>
+        <td><button onclick="insert('5')">5</button></td>
+        <td><button onclick="insert('6')">6</button></td>
+        <td><button onclick="insert('-')">-</button></td>
+        <td><button onclick="insert('sqrt(')">√</button></td>
+      </tr>
+      <tr>
+        <td><button onclick="insert('1')">1</button></td>
+        <td><button onclick="insert('2')">2</button></td>
+        <td><button onclick="insert('3')">3</button></td>
+        <td><button onclick="insert('/')">/</button></td>
+        <td><button onclick="insert('pow(,3)')">x<sup>3</sup></button></td>
+      </tr>
+      <tr>
+        <td><button onclick="insert('.')">.</button></td>
+        <td><button onclick="insert('0')">0</button></td>
+        <td><button onclick="calculate()">=</button></td>
+        <td><button onclick="insert('*')">*</button></td>
+        <td><button onclick="insert('pow(,2)')">x<sup>2</sup></button></td>
+      </tr>
+    </table>
   </div>
-  
+
   <script>
-    
+    let memory = 0;
+
+    function insert(value) {
+      document.getElementById("main-display").innerText += value;
+    }
+
+    function clearDisplay() {
+      document.getElementById("main-display").innerText = "";
+      document.getElementById("secondary-display").innerText = "";
+    }
+
+    function del() {
+      let display = document.getElementById("main-display").innerText;
+      document.getElementById("main-display").innerText = display.slice(0, -1);
+    }
+
+    function memoryAdd() {
+      memory += parseFloat(document.getElementById("main-display").innerText || 0);
+      clearDisplay();
+    }
+
+    function memoryRecall() {
+      insert(memory.toString());
+    }
+
+    function factorial(n) {
+      return n ? n * factorial(n - 1) : 1;
+    }
+
+    function random() {
+      return Math.random();
+    }
+
+    function bin(n) {
+      return (n >>> 0).toString(2);
+    }
+
+    function oct(n) {
+      return n.toString(8);
+    }
+
+    function hex(n) {
+      return n.toString(16);
+    }
+
+    function root(x, y) {
+      return Math.pow(x, 1 / y);
+    }
+
+    function cbrt(n) {
+      return Math.cbrt(n);
+    }
+
+    function sqrt(n) {
+      return Math.sqrt(n);
+    }
+
+    function pow(base, exp) {
+      return Math.pow(base, exp);
+    }
+
+    function log10(n) {
+      return Math.log10(n);
+    }
+
+    function ln(n) {
+      return Math.log(n);
+    }
+
+    function sin(n) {
+      return Math.sin(n);
+    }
+
+    function cos(n) {
+      return Math.cos(n);
+    }
+
+    function tan(n) {
+      return Math.tan(n);
+    }
+
+    function e() {
+      return Math.E;
+    }
+
+    function π() {
+      return Math.PI;
+    }
+
+    function calculate() {
+      let expression = document.getElementById("main-display").innerText;
+
+      // Handle advanced functions
+      expression = expression.replace(/factorial\((\d+)\)/g, (match, number) => factorial(Number(number)));
+      expression = expression.replace(/random\(\)/g, () => random());
+      expression = expression.replace(/bin\((\d+)\)/g, (match, number) => bin(Number(number)));
+      expression = expression.replace(/oct\((\d+)\)/g, (match, number) => oct(Number(number)));
+      expression = expression.replace(/hex\((\d+)\)/g, (match, number) => hex(Number(number)));
+      expression = expression.replace(/root\((\d+),(\d+)\)/g, (match, x, y) => root(Number(x), Number(y)));
+      expression = expression.replace(/cbrt\((\d+)\)/g, (match, number) => cbrt(Number(number)));
+      expression = expression.replace(/sqrt\((\d+)\)/g, (match, number) => sqrt(Number(number)));
+      expression = expression.replace(/pow\((\d+),(\d+)\)/g, (match, base, exp) => pow(Number(base), Number(exp)));
+      expression = expression.replace(/log10\((\d+)\)/g, (match, number) => log10(Number(number)));
+      expression = expression.replace(/ln\((\d+)\)/g, (match, number) => ln(Number(number)));
+      expression = expression.replace(/sin\((\d+)\)/g, (match, number) => sin(Number(number)));
+      expression = expression.replace(/cos\((\d+)\)/g, (match, number) => cos(Number(number)));
+      expression = expression.replace(/tan\((\d+)\)/g, (match, number) => tan(Number(number)));
+      expression = expression.replace(/e\(\)/g, () => e());
+      expression = expression.replace(/π\(\)/g, () => π());
+
+      document.getElementById("main-display").innerText = eval(expression);
+    }
   </script>
 </body>
 

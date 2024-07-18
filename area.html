@@ -6,74 +6,142 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" type="image/png" sizes="32x32" href="logo.png">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Area of triangle-by it's coordinate</title>
+  <title>Area of Triangle/Distance between 2 Points</title>
+  <style>
+    body {
+      background-color: #00071A;
+      color: #ffffff;
+      font-family: Arial, sans-serif;
+    }
+
+    button,
+    input {
+      background-color: #444;
+      border: 1px solid #666;
+      color: #fff;
+      padding: 10px;
+      margin: 10px;
+      cursor: pointer;
+      border-radius: 10px;
+    }
+
+    input[type="number"] {
+      background-color: #333;
+      border: 1px solid #555;
+      color: #fff;
+      padding: 5px;
+      margin: 5px;
+    }
+
+    button:hover,
+    input[type="button"]:hover {
+      background-color: #555;
+    }
+
+    div {
+      padding: 10px;
+      margin: 10px;
+    }
+
+    center {
+      margin: 20px;
+    }
+
+    hr {
+      border: 1px solid #444;
+    }
+
+    .div {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .res {
+      border: 1px solid #555;
+      border-radius: 5px;
+      background: #333;
+      padding: 10px 30px;
+      width: fit-content;
+    }
+
+    h2 {
+      width: fit-content;
+      text-shadow: 0 0 3px #45FF5F;
+      border-bottom: 1px solid green;
+    }
+
+    #h {
+      text-shadow: 0 0 3px #FCFF45;
+      border-bottom: 1px solid #FCFF45;
+
+    }
+    .a{
+      display: flex;
+      flex-direction: column;
+    }
+  </style>
 </head>
 
 <body>
   <div oncanplaythrough="Symbol">
-    <center>Enter the coordinates To Find area</center><br />
     <center>
-      X1<input type="text" id="x1">
-      Y1<input type="text" id="y1"><br>
-      X2<input type="text" id="x2">
-      Y2<input type="text" id="y2"><br>
-      X3<input type="text" id="x3">
-      Y3<input type="text" id="y3"><br><br>
-      <button onclick="area()">Get Area</button>
-      <div id="get">Get area here</div>
+      <h2>Enter the Coordinates to Find Area</h2>
+      <div>
+        <div class="div">
+          <div class="a">
+            <input type="number" id="x1" placeholder="x1">
+            <input type="number" id="x2" placeholder="x2">
+            <input type="number" id="x3" placeholder="x3">
+          </div>
+          <div class="a">
+            <input type="number" id="y1" placeholder="y1">
+            <input type="number" id="y2" placeholder="y2">
+            <input type="number" id="y3" placeholder="y3">
+          </div>
+        </div>
+        <button onclick="area()">Get Area</button>
+        <div id="get" class="res">Get area here!</div>
+      </div>
     </center>
-  </div><br />
+  </div>
   <hr />
-  <hr /><br />
   <div>
-    <center>Enter the coordinates To get Distance</center><br />
     <center>
-      X1<input type="text" id="z1">
-      Y1<input type="text" id="w1"><br />
-      X2<input type="text" id="z2">
-      Y2<input type="text" id="w2"><br /><br />
-      <input type="button" value="Get Distance" onclick="dist()">
-      <div id="val">Get Distance Here <br /></div>
+      <h2 id="h">Enter the Coordinates to Get Distance</h2>
+      <div>
+        <div class="div">
+          <div class="a">
+            <input type="number" id="z1" placeholder="x1">
+            <input type="number" id="z2" placeholder="x2">
+          </div>
+          <div class="a">
+            <input type="number" id="w1" placeholder="y1">
+            <input type="number" id="w2" placeholder="y2">
+          </div>
+        </div>
+        <input type="button" value="Get Distance" onclick="dist()">
+        <div id="val" class="res">Get Distance Here!</div>
+      </div>
     </center>
   </div>
   <script>
     let area = () => {
       let x1 = document.getElementById('x1').value;
-      let a1 = x1.split('');
       let y1 = document.getElementById('y1').value;
-      let b1 = y1.split('');
       let x2 = document.getElementById('x2').value;
-      let a2 = x2.split('');
       let y2 = document.getElementById('y2').value;
-      let b2 = y2.split('');
       let x3 = document.getElementById('x3').value;
-      let a3 = x3.split('');
       let y3 = document.getElementById('y3').value;
-      let b3 = y3.split('');
 
       let val = document.getElementById('get');
-      if (x1.length == 0 || y1.length == 0 || x2.length == 0 || y2.length == 0 || x3.length == 0 || y3.length == 0) {
-        alert("Enter All The Values!")
-      }
-
-      else {
-        if (a1.includes("√")) {
-          if ((a1.length - 1) - a1.indexOf("√") == 0) {
-            alert("Type a right no.");
-          }
-          else {
-            if (a1.indexOf("√") == 0) {
-              a1.splice(a1.indexOf("√"), 1);
-              let a = Math.sqrt(a1.join(""));
-              val.innerHTML = "√"+Math.abs((a * (y2 - y3) + x2 * (y3 - y1) + x3 * (y1 - y2)) / 2)**2 +" sq.unit" 
-            }
-          }
-        }
-        else {
-          val.innerHTML = (x1 * (y2 - y3) + x2 * (y3 - y1) + x3 * (y1 - y2)) / 2 + " sq.unit"
-        }
+      if (!x1 || !y1 || !x2 || !y2 || !x3 || !y3) {
+        alert("Enter All The Values!");
+      } else {
+        val.innerHTML = Math.abs((x1 * (y2 - y3) + x2 * (y3 - y1) + x3 * (y1 - y2)) / 2) + " sq. unit";
       }
     }
+
     let dist = () => {
       let z1 = document.getElementById('z1').value;
       let w1 = document.getElementById('w1').value;
@@ -81,18 +149,11 @@
       let w2 = document.getElementById('w2').value;
 
       let val1 = document.getElementById('val');
-
-
-      if (z1.length == 0 || w1.length == 0 || z2.length == 0 || w2.length == 0) { alert("Enter All The Values!") }
-
-      else {
-        let dist = (z1 - z2) ** 2 + (w1 - w2) ** 2;
-        val1.innerText = `√${dist} unit`;
-        for (i = 1; i <= Math.sqrt(dist); i++) {
-          if (dist == i ** 2) {
-            val1.innerHTML = i + " unit";
-          }
-        }
+      if (!z1 || !w1 || !z2 || !w2) {
+        alert("Enter All The Values!");
+      } else {
+        let dist = Math.sqrt((z1 - z2) ** 2 + (w1 - w2) ** 2);
+        val1.innerText = dist + " unit";
       }
     }
   </script>
