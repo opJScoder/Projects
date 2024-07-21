@@ -13,6 +13,12 @@
       background-color: #006389;
       text-align: center;
       padding: 50px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      min-height: 100vh;
+      height: 100%;
     }
 
     h1 {
@@ -28,6 +34,8 @@
       padding: 10px;
       width: 200px;
       margin: 10px;
+      outline: none;
+      border: 2px groove #313131
     }
 
     input[type="button"] {
@@ -61,7 +69,8 @@
     let game = () => {
       var val = document.getElementById('val');
       var n = document.getElementById("num").value;
-      if (y - n == 1 || n - y == 1 || y - n == 2 || n - y == 2 || y - n == 3 || n - y == 3) {
+      if (n == '' || n == null) val.innerHTML = 'Enter the value to check!'
+      else if (y - n == 1 || n - y == 1 || y - n == 2 || n - y == 2 || y - n == 3 || n - y == 3) {
         guess++;
         val.innerHTML = "You are too close!";
       }
@@ -91,7 +100,7 @@
       }
       else {
         guess++;
-        val.innerHTML = guess == 1 ? "CONGRATULATIONS!!!<br><br>YOU GUESSED IT RIGHT IN," + guess + " GUESS!" : "CONGRATULATIONS!!!<br><br>YOU GUESSED IT RIGHT IN, " + guess + " GUESSES!";
+        val.innerHTML = guess == 1 ? "CONGRATULATIONS!!!<br><br>YOU GUESSED IT RIGHT IN, " + guess + " GUESS!" : "CONGRATULATIONS!!!<br><br>YOU GUESSED IT RIGHT IN, " + guess + " GUESSES!";
       }
     }
   </script>

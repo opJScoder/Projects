@@ -16,16 +16,17 @@
       box-sizing: border-box;
     }
 
-    main {
+    body {
       width: 100vw;
       display: flex;
       justify-content: center;
       align-items: center;
       flex-direction: column;
       background: linear-gradient(-90deg, #F8CDDA, #fff, #1D2B64);
-      padding: 40px 0 100px 0;
-      height: 100vh;
+      min-height: 100vh;
+      height: 100%;
     }
+
 
     #num {
       text-align: center;
@@ -97,30 +98,31 @@
     #main {
       width: 100vw;
       display: flex;
-      justify-content: space-evenly
+      justify-content: space-evenly;
+    }
+
+    h1 {
+      font-size: 2rem;
+      font-weight: bold;
+      margin-top: 50px;
+      border-bottom: 2px double #006BFF;
     }
   </style>
 </head>
 
 <body>
-  <main id="man">
-    <h1 style="font-size:2rem;font-weight:bold">Prime Numbers</h1>
-    <p style="font-size:.8rem">-made by js</p>
-    <input type="number" id="num" placeholder="Enter the value" />
-    <input type="button" id="btn" value='Get' onclick="check()" />
-    <div id="val" class="a b">Check Prime or Not!</div>
-    <div id="main">
-      <div id="val1" class="a">Get the Factors, here!</div>
-      <div id="val2" class="a">Get Prime Factors, here!</div>
-    </div>
-    <div id="val3" class="a b">Get all the Prime numbers less than entered number, here!</div>
-  </main>
-  <script type="text/javascript" charset="utf-8">
-    window.addEventListener('scroll', () => {
-      // alert('op');
-      document.getElementById('man').style.height = "fit-content";
-    })
+  <h1>Prime Numbers</h1>
 
+  <p style="font-size:.8rem;margin-bottom: 50px">-made by js</p>
+  <input type="number" id="num" placeholder="Enter the value" />
+  <input type="button" id="btn" value='Get' onclick="check()" />
+  <div id="val" class="a b">Check Prime or Not!</div>
+  <div id="main">
+    <div id="val1" class="a">Get the Factors, here!</div>
+    <div id="val2" class="a">Get Prime Factors, here!</div>
+  </div>
+  <div id="val3" class="a b">Get all the Prime numbers less than entered number, here!</div>
+  <script type="text/javascript" charset="utf-8">
     let check = () => {
       let n = document.getElementById('num').value;
       let a = n.length;

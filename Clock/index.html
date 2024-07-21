@@ -8,7 +8,12 @@
   <link rel="icon" type="image/png" sizes="32x32" href="../logo.png">
   <title>Clock</title>
   <style type="text/css" media="all">
-  *{margin: 0;padding: 0;box-sizing: border-box}
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box
+    }
+
     #contain {
       position: relative;
       margin: auto;
@@ -57,14 +62,14 @@
       background-color: black;
       top: 50%;
       left: 50%;
-      transform: translate(-50%,-50%)
+      transform: translate(-50%, -50%)
     }
   </style>
 </head>
 
 <body>
   <h1 style="border: 2px solid grey; border-radius: 20px; padding: 10px 0px;margin: 15px;background: gray">
-    
+
     <center style="border: 2px solid black; border-radius: 200px;padding: 15px;margin: 5px;background: white">
       Find your time! It's invisible</center>
   </h1>
@@ -75,7 +80,19 @@
     <div id="center"> </div>
   </div>
   <script>
-    setInterval(() => {
+    // setInterval(() => {
+    //   d = new Date();
+    //   htime = d.getHours();
+    //   mtime = d.getMinutes();
+    //   stime = d.getSeconds();
+    //   hrotation = 30 * htime + mtime / 2;
+    //   mrotation = 6 * mtime;
+    //   srotation = 6 * stime;
+    //   hour.style.transform = `rotate(${hrotation}deg)`;
+    //   minute.style.transform = `rotate(${mrotation}deg)`;
+    //   second.style.transform = `rotate(${srotation}deg)`;
+    // }, 1000);
+    let time = () => {
       d = new Date();
       htime = d.getHours();
       mtime = d.getMinutes();
@@ -83,11 +100,13 @@
       hrotation = 30 * htime + mtime / 2;
       mrotation = 6 * mtime;
       srotation = 6 * stime;
-  
+
       hour.style.transform = `rotate(${hrotation}deg)`;
       minute.style.transform = `rotate(${mrotation}deg)`;
       second.style.transform = `rotate(${srotation}deg)`;
-    }, 1000);
+    }
+    setInterval(() => { time() }, 1000);
+    time();
   </script>
 </body>
 

@@ -17,21 +17,22 @@
     }
 
     body {
-      height: 100vh;
-      background: radial-gradient(circle, #1c1c1c, #000);
+      min-height: 100vh;
+      height: 100%;
+      background: radial-gradient( #474747, #000000);
       font-family: 'Lobster', cursive;
     }
 
     h1 {
       color: #D4F316;
       font-size: 4.5rem;
-      padding: 30px;
+      padding: 10px;
       text-align: center;
-      margin: 100px;
+      margin:30px auto 100px;
       border: 2px solid grey;
       border-radius: 20px;
-      background: radial-gradient(#565656,#262626);
-      width: fit-content;
+      background: radial-gradient(#565656, #262626);
+      width: 528px;
     }
 
     .contain {
@@ -48,7 +49,7 @@
       border-radius: 20px;
       width: 100%;
       max-width: 400px;
-      box-shadow: 0 0 5px 1px #A6A6A6;
+      box-shadow: 0 0 5px 1px #707070;
       border: 2px solid #868686;
       margin-bottom: 100px;
     }
@@ -94,32 +95,32 @@
       <input type="text" name="screen" id="screen" placeholder="0" readonly />
       <table>
         <tr>
-          <td><button onclick="appendToScreen('9')">9</button></td>
-          <td><button onclick="appendToScreen('8')">8</button></td>
           <td><button onclick="appendToScreen('7')">7</button></td>
-          <td><button onclick="clearScreen()">C</button></td>
+          <td><button onclick="appendToScreen('8')">8</button></td>
+          <td><button onclick="appendToScreen('9')">9</button></td>
+          <td><button onclick="clearScreen()">AC</button></td>
         </tr>
         <tr>
-          <td><button onclick="appendToScreen('6')">6</button></td>
-          <td><button onclick="appendToScreen('5')">5</button></td>
           <td><button onclick="appendToScreen('4')">4</button></td>
-          <td><button onclick="appendToScreen('-')">-</button></td>
+          <td><button onclick="appendToScreen('5')">5</button></td>
+          <td><button onclick="appendToScreen('6')">6</button></td>
+          <td><button onclick="del()">C</button></td>
         </tr>
         <tr>
-          <td><button onclick="appendToScreen('3')">3</button></td>
-          <td><button onclick="appendToScreen('2')">2</button></td>
           <td><button onclick="appendToScreen('1')">1</button></td>
+          <td><button onclick="appendToScreen('2')">2</button></td>
+          <td><button onclick="appendToScreen('3')">3</button></td>
           <td><button onclick="appendToScreen('*')">*</button></td>
         </tr>
         <tr>
-          <td><button onclick="appendToScreen(',')">,</button></td>
+          <td><button onclick="appendToScreen('00')">00</button></td>
           <td><button onclick="appendToScreen('0')">0</button></td>
-          <td><button onclick="appendToScreen('.')">.</button></td>
+          <td><button onclick="appendToScreen('-')">-</button></td>
           <td><button onclick="appendToScreen('/')">/</button></td>
         </tr>
         <tr>
-          <td><button onclick="appendToScreen('00')">00</button></td>
           <td><button onclick="appendToScreen('000')">000</button></td>
+          <td><button onclick="appendToScreen('.')">.</button></td>
           <td><button onclick="appendToScreen('+')">+</button></td>
           <td><button onclick="calculateResult()">=</button></td>
         </tr>
@@ -128,6 +129,12 @@
   </div>
   <script>
     const screen = document.getElementById('screen');
+
+    function del() {
+      let display = document.getElementById("screen").value;
+      document.getElementById("screen").value = display.slice(0, -1);
+    }
+
 
     function appendToScreen(value) {
       if (screen.value === '0') {

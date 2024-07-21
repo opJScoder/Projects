@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,16 +8,66 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Hover</title>
   <style type="text/css" media="all">
-    *{margin: 0;padding: 0;box-sizing: border-box}
-    body{width: 100%;height: 100vh;display: flex;justify-content: center;align-items: center;background: #212121}
-    h1{font-size: 5rem;width: 200px;height: 200px;text-align: center;font-family: monospace;border-radius: 50%;display: grid;place-items: center;box-shadow:0 0 20px 2px #57FF55;position: relative;background: #3CFF3A}
-    h1:before{content:"";position: absolute;width: 110%;height: 110%;border:5px dotted lime;border-radius: 50%;opacity: 0;transition:.5s}
-    h1:hover:before{opacity:1;
-    animation: rot 4s linear infinite;}
-    @keyframes rot{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box
+    }
+
+    body {
+      width: 100%;
+      min-height: 100vh;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: radial-gradient(#313131, #000)
+    }
+
+    h1 {
+      font-size: 5rem;
+      width: 200px;
+      height: 200px;
+      text-align: center;
+      font-family: monospace;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      box-shadow: 0 0 20px 2px #57FF55;
+      position: relative;
+      background: radial-gradient(#3CFF3A, #0CB20C)
+    }
+
+    h1:before {
+      content: "";
+      position: absolute;
+      width: 110%;
+      height: 110%;
+      border: 5px dotted #01FF0096;
+      border-radius: 50%;
+      opacity: 0;
+      transition: 1s
+    }
+
+    h1:hover:before {
+      opacity: 1;
+      animation: rot 10s linear infinite;
+    }
+
+    @keyframes rot {
+      0% {
+        transform: rotate(0deg)
+      }
+
+      100% {
+        transform: rotate(360deg)
+      }
+    }
   </style>
 </head>
+
 <body>
   <h1>Js</h1>
 </body>
+
 </html>

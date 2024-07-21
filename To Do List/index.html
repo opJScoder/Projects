@@ -14,7 +14,9 @@
     }
 
     body {
-      height: 100vh
+      min-height: 100vh;
+      height: 100%;
+      background: radial-gradient(#4B4B4B,#202020)
     }
 
     h1 {
@@ -22,11 +24,12 @@
       padding: 10px;
       font-weight: bold;
       font-family: monospace;
-      border: 3px solid black;
+      border: 1px solid #FFF;
       border-radius: 30px;
       text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
       box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.5);
-      background: #FEFEFEDE;
+      background: #78787861;
+      color:#ECECEC;
     }
 
     /* Input */
@@ -45,19 +48,22 @@
       max-width: 500px;
       place-self: center;
       margin-right: 10px;
-      box-shadow: 0 3px 10px -2px gray;
+      box-shadow: 0 0 10px -2px #000000B3;
       height: 33px;
       font-size: 1.1rem;
+      border: 2px solid #000000 ;
+      background: #FFFFFF8A;
+      color: #FFFFFF
     }
 
     #btn,
     #btn1 {
       border-radius: 5px;
       outline: none;
-      border: 2px solid black;
+      border: 2px solid #000000;
       width: 60px;
-      background: #fff;
-      box-shadow: 0 2px 10px 2px gray;
+      background: #FFFFFFA3;
+      box-shadow: 0 0 10px -2px #000000A3;
       user-select: none;
       margin: 4px;
     }
@@ -75,6 +81,7 @@
     .list {
       margin: auto;
       max-width: 560px;
+      color: white
     }
 
     li {
@@ -88,7 +95,7 @@
   <div class="main">
     <h1>To Do List ✓</h1>
     <div class="adder">
-      <input type="text" name="text" id="text" placeholder="Enter your TASK" />
+      <input type="text" name="text" id="text" placeholder="Enter your task" />
       <button id="btn">
         Add
       </button>
@@ -108,8 +115,8 @@
     let rem = document.getElementById("rem");
     btn.style.display = 'none'
 
-    if (localStorage['a'] != undefined && localStorage['a'].length>0) {
-      ol.innerHTML = localStorage['a'];
+    if (localStorage['a1'] != undefined && localStorage['a1'].length>0) {
+      ol.innerHTML = localStorage['a1'];
       btn.style.display = 'block'
     }
 
@@ -125,7 +132,7 @@
       if (confirm(`Sure to delete - "${i}" ?`))
       {
         event.target.remove()
-        localStorage['a'] = ol.innerHTML
+        localStorage['a1'] = ol.innerHTML
         if (ol.innerHTML == '') { btn.style.display = 'none' }
       }
     }
@@ -135,7 +142,7 @@
         let li = `<li ondblclick="dl(\`${input.value}\`)">${input.value}</li>`;
         ol.innerHTML += li
         input.value = "";
-        localStorage['a'] = ol.innerHTML;
+        localStorage['a1'] = ol.innerHTML;
         btn.style.display = 'block'
       } else {
         alert("Enter something to add!")

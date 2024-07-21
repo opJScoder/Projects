@@ -24,7 +24,8 @@
       background: radial-gradient(#123052, #0D1B2A);
       color: #E0E1DD;
       font-family: Arial, sans-serif;
-      height: 100vh;
+      min-height: 100vh;
+      height: 100%
     }
 
     .schedule-container {
@@ -34,7 +35,8 @@
       width: 400px;
       box-shadow: 0 0 5px 0 #00B0FF, 0 0 50px 2px #0B0B0BA8;
       border: 2px solid #00B0FF;
-      margin: auto;
+      margin: 0 auto;
+      margin-bottom: 200px;
     }
 
     .date-picker {
@@ -233,7 +235,7 @@
     #loadingScreen p.typing {
       width: 395px;
       text-shadow: 0 0 4px #FFFFFF;
-      animation: typing 3s linear, blink 1s step-end infinite, fade 1s 4s;
+      animation: typing 2s linear, blink 1s step-end infinite, fade 1s 2s;
     }
   </style>
 </head>
@@ -257,7 +259,7 @@
       const loadingScreen = document.getElementById('loadingScreen');
       setTimeout(() => {
         loadingScreen.style.display = 'none';
-      }, 5000);
+      }, 3000);
     });
     c = new Date()
     crnt = `${c.getFullYear()}-${String(c.getMonth() + 1).padStart(2, '0')}-${c.getDate()}`
