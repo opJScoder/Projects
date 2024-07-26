@@ -21,11 +21,11 @@
       place-items: center;
       perspective: 1000px;
     }
-    
-    :root{
-      --w:230px;
-      --c:green;
-      --a:110;
+
+    :root {
+      --w: 250px;
+      --c: green;
+      --a: 110;
     }
 
     .cube {
@@ -47,7 +47,8 @@
     }
 
     .cube div,
-    p,.top{
+    p,
+    .top {
       position: absolute;
       width: 100%;
       height: 100%;
@@ -55,33 +56,36 @@
       left: 0;
     }
 
-    .cube div,.top {
+    .cube div,
+    .top {
       transform-style: preserve-3d
     }
 
-  .cube p {
+    .cube p {
       background: linear-gradient(#161616, var(--c));
       transform: rotateY(calc(90deg*var(--i))) translateZ(calc(var(--w)/2));
     }
-    .top{
+
+    .top {
       background: #181818;
       transform: rotatex(90deg) translatez(calc(var(--w)/2));
     }
-    .top::before{
-      content:'';
+
+    .top::before {
+      content: '';
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgb(0,var(--a), 0);
+      background: rgb(0, var(--a), 0);
       transform: translatez(-300px);
       filter: blur(20px);
-      box-shadow: 
-      0 0 80px rgb(0,var(--a), 0),
-      0 0 90px rgb(0,calc(var(--a)*1.1), 0),
-      0 0 100px rgb(0,calc(var(--a)*2), 0)
-      ;    }
+      box-shadow:
+        0 0 80px rgb(0, var(--a), 0),
+        0 0 90px rgb(0, calc(var(--a)*1.1), 0),
+        0 0 100px rgb(0, calc(var(--a)*2), 0);
+    }
   </style>
 </head>
 
