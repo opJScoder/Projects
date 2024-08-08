@@ -21,12 +21,13 @@
 
 
     body {
-      background: radial-gradient(#123052, #0D1B2A);
+      background: radial-gradient(circle at center,#123052, #0D1B2A);
       color: #E0E1DD;
       font-family: Arial, sans-serif;
       min-height: 100vh;
-      height: 100%
+      height: 100%;
     }
+    
 
     .schedule-container {
       background-color: #00000085;
@@ -249,23 +250,20 @@
   </div>
   <h1>|| PRACTICAL SCHEDULE ||</h1>
   <div class="schedule-container">
-    <input type="date" class="date-picker" id="datePicker" placeholder="oo">
+    <input type="date" class="date-picker" id="datePicker">
     <div id="schedule">
       <h2 id="res"></h2>
     </div>
   </div>
   <script>
-    window.addEventListener('scroll', () => {
-      document.body.style.height = "";
-    })
     window.addEventListener("load", () => {
       const loadingScreen = document.getElementById('loadingScreen');
       setTimeout(() => {
         loadingScreen.style.display = 'none';
-      }, 3000);
+      }, 000);
     });
     c = new Date()
-    crnt = `${c.getFullYear()}-${String(c.getMonth() + 1).padStart(2, '0')}-${c.getDate()}`
+    crnt = `${c.getFullYear()}-${String(c.getMonth() + 1).padStart(2, '0')}-${String(c.getDate() + 1).padStart(2, '0')}`
     document.getElementById('datePicker').value = crnt;
 
     function getScheduleForDate(a) {
