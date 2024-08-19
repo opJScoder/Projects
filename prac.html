@@ -260,10 +260,10 @@
       const loadingScreen = document.getElementById('loadingScreen');
       setTimeout(() => {
         loadingScreen.style.display = 'none';
-      }, 000);
+      }, 3000);
     });
     c = new Date()
-    crnt = `${c.getFullYear()}-${String(c.getMonth() + 1).padStart(2, '0')}-${String(c.getDate() + 1).padStart(2, '0')}`
+    crnt = `${c.getFullYear()}-${String(c.getMonth() + 1).padStart(2, '0')}-${String(c.getDate()).padStart(2, '0')}`
     document.getElementById('datePicker').value = crnt;
 
     function getScheduleForDate(a) {
