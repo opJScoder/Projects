@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SecreT MessagE ConverteR</title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+    }
+
+    @font-face {
+      font-family: js2;
+      src: url('js2.ttf')
+    }
+
+    body {
+      color: #fff;
+      min-height: 100vh;
+      height: 100%;
+      background: radial-gradient(circle, #A851EE, #A851EE, #A851EE, #A851EE, #A851EE, #A851EE, #A851EE, #A851EE, #A851EE, #A851EE, #A851EE, #A851EE, #A851EE, #A851EE, #A851EE, #A851EE, #A851EE, #290447, #6614A9, #290447, #A851EE, #290447, #6614A9, #290447, #A851EE, #290447, #6614A9, #290447, #A851EE, #290447, #6614A9, #290447, #B76BF4, #290447);
+      display: flex;
+      justify-content: center;
+      align-content: center;
+    }
+
+
+    .container {
+      position: relative;
+      background-color: rgba(0, 0, 0, 0.8);
+      padding: 50px 40px;
+      border-radius: 30px;
+      box-shadow: 0 0 200px #000, 0 0 100px #000000C7, 0 0 30px #000000;
+      text-align: center;
+      width: 80%;
+      margin: auto;
+      border: 1.5px solid #8F51C4;
+    }
+
+    h1 {
+      font-family: js2;
+      font-size: 1.72rem;
+      margin-bottom: 40px;
+      text-shadow: 0 0 7px #D13BFF
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 20px;
+      border-radius: 5px;
+      border: none;
+      outline: none;
+      font-size: 1rem;
+      text-align: center;
+      border: 1.5px solid #8F51C4;
+      background: #EAD2FF;
+    }
+
+
+    button {
+      padding: 10px 20px;
+      background-color: #4B2D756E;
+      border: none;
+      border-radius: 50px;
+      font-size: 1rem;
+      color: #fff;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      font-style: italic;
+      border: 1.5px solid #8F51C4;
+      text-shadow: 0 0 7px #D13BFF;
+    }
+
+    button:hover {
+      outline: none;
+      background-color: #005E066E;
+    }
+
+    .encrypt:hover {
+      background-color: #5E00006E;
+      outline: none;
+
+    }
+
+    .result {
+      border: 1.5px solid #8F51C4;
+      font-size: 1.2rem;
+      padding: 10px;
+      background-color: rgba(255, 255, 255, 0.2);
+      border-radius: 12px 5px;
+      text-align: center;
+      width: 90%;
+      margin: 20px auto 0;
+      word-wrap: break-word;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>secreT messagE converteR</h1>
+    <input type="text" id="input" placeholder="enteR thE secreT messagE">
+    <button onclick="encrypt()" class="encrypt">€ñ¢rÿ₱t</button>
+    <button onclick="decrypt()">đ€črÿ₱t</button>
+    <div class="result" id="result">Øùt₱ût §čr€èñ</div>
+  </div>
+  <script>
+    const periodicTable = {
+      0: ' ',
+      1: 'H',
+      2: 'He',
+      3: 'Li',
+      4: 'Be',
+      5: 'B',
+      6: 'C',
+      7: 'N',
+      8: 'O',
+      9: 'F',
+      10: 'Ne',
+      11: 'Na',
+      12: 'Mg',
+      13: 'Al',
+      14: 'Si',
+      15: 'P',
+      16: 'S',
+      17: 'Cl',
+      18: 'Ar',
+      19: 'K',
+      20: 'Ca',
+      21: 'Sc',
+      22: 'Ti',
+      23: 'V',
+      24: 'Cr',
+      25: 'Mn',
+      26: 'Fe',
+      27: 'Co',
+      28: 'Ni',
+      29: 'Cu',
+      30: 'Zn',
+      31: 'Ga',
+      32: 'Ge',
+      33: 'As',
+      34: 'Se',
+      35: 'Br',
+      36: 'Kr',
+      37: 'Rb',
+      38: 'Sr',
+      39: 'Y',
+      40: 'Zr',
+      41: 'Nb',
+      42: 'Mo',
+      43: 'Tc',
+      44: 'Ru',
+      45: 'Rh',
+      46: 'Pd',
+      47: 'Ag',
+      48: 'Cd',
+      49: 'In',
+      50: 'Sn',
+      51: 'Sb',
+      52: 'Te',
+      53: 'I',
+      54: 'Xe',
+      55: 'Cs',
+      56: 'Ba',
+      57: 'La',
+      58: 'Ce',
+      59: 'Pr',
+      60: 'Nd',
+      61: 'Pm',
+      62: 'Sm',
+      63: 'Eu',
+      64: 'Gd',
+      65: 'Tb',
+      66: 'Dy',
+      67: 'Ho',
+      68: 'Er',
+      69: 'Tm',
+      70: 'Yb',
+      71: 'Lu',
+      72: 'Hf',
+      73: 'Ta',
+      74: 'W',
+      75: 'Re',
+      76: 'Os',
+      77: 'Ir',
+      78: 'Pt',
+      79: 'Au',
+      80: 'Hg',
+      81: 'Tl',
+      82: 'Pb',
+      83: 'Bi',
+      84: 'Po',
+      85: 'At',
+      86: 'Rn',
+      87: 'Fr',
+      88: 'Ra',
+      89: 'Ac',
+      90: 'Th',
+      91: 'Pa',
+      92: 'U',
+      93: 'Np',
+      94: 'Pu',
+      95: 'Am',
+      96: 'Cm',
+      97: 'Bk',
+      98: 'Cf',
+      99: 'Es',
+      100: 'Fm',
+      101: 'Md',
+      102: 'No',
+      103: 'Lr',
+      104: 'Rf',
+      105: 'Db',
+      106: 'Sg',
+      107: 'Bh',
+      108: 'Hs',
+      109: 'Mt',
+      110: 'Ds',
+      111: 'Rg',
+      112: 'Cn',
+      113: 'Nh',
+      114: 'Fl',
+      115: 'Mc',
+      116: 'Lv',
+      117: 'Ts',
+      118: 'Og',
+      119: 'A',
+      120: 'D',
+      121: 'E',
+      122: 'G',
+      123: 'J',
+      124: 'L',
+      125: 'M',
+      126: 'Q',
+      127: 'R',
+      128: 'T',
+      129: 'X',
+      130: 'Z',
+      131: ':',
+      132: ';',
+      133: '"',
+      134: ',',
+      135: '.',
+      136: '!',
+      137: '(',
+      138: ')',
+      139: '[',
+      140: ']',
+      141: '{',
+      142: '}',
+      143: '1',
+      144: '2',
+      145: '3',
+      146: '4',
+      147: '5',
+      148: '6',
+      149: '7',
+      150: '8',
+      151: '9',
+      152: '0',
+      153: '/',
+      154: "'",
+      155: "?",
+      156: ">",
+      157: "<",
+      158: "+",
+      159: "$",
+      160: "=",
+      161: "*",
+      162: "^",
+      163: "√",
+      164: "%",
+      165: 'π',
+      166: '\\',
+      167: '`',
+      168: '∫',
+      169: '\-',
+      170: '²',
+      171: '³',
+      172: '⁴'
+    };
+    const symbolToNumber = Object.fromEntries(Object.entries(periodicTable).map(([key, value]) => [value.toLowerCase(), key]));
+    const resultDiv = document.getElementById('result');
+
+    let decrypt = () => {
+      const input = document.getElementById('input').value.trim();
+      if (input.startsWith('[')) {
+        const matches = input.match(/\[\d+\]/g);
+        if (matches) {
+          const elements = matches.map(match => {
+            const num = match.replace(/\[|\]/g, '');
+            return periodicTable[num] || 'Unknown';
+          });
+          elements1 = elements.map((j, k, e) => { return e[k].toLowerCase() });
+          elements1[0] = elements1[0].toUpperCase();
+          resultDiv.innerHTML = elements1.join('');
+          navigator.clipboard.writeText(elements1.join(''));
+
+        }
+        else {
+          resultDiv.innerHTML = 'Invalid Input';
+        }
+      }
+      else {
+        if (!input) {
+          resultDiv.innerHTML = 'Ñôthîng tó đëçrý₱t'
+        }
+        else {
+          resultDiv.innerHTML = 'Å₤rēãđÿ đëçr¥₱t€d'
+        }
+      }
+    }
+    let encrypt = () => {
+      const input = document.getElementById('input').value.trim();
+      const elements = input.match(/[A-Z,a-z,' ',0-9,=,':', ';', '"', ',', '.', '!', '(', ')','[','\]', '}', '{', '/', "'", "?", ">", "<", "+", "-", "=", "*", "^", "√", "%",'π','\\','$','`','∫','²','³','⁴','\-']/g);
+      if (elements) {
+        const atomicNumbers = elements.map(symbol => {
+          return `[${symbolToNumber[symbol.toLowerCase()] || 'Unknown'}]`;
+        });
+        resultDiv.innerHTML = atomicNumbers.join('');
+        navigator.clipboard.writeText(atomicNumbers.join(''));
+
+      } else {
+        resultDiv.innerHTML = 'Ñøthīñg tô ën¢rý₱t';
+      }
+    }
+
+    input.addEventListener("keypress", e =>
+    {
+      const input = document.getElementById('input').value.trim();
+      if (input.startsWith('[')) decrypt();
+      else encrypt();
+    });
+  </script>
+</body>
+
+</html>
