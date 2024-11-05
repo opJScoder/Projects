@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="description" content="All copyrights are preserved by !i! JS !i!">
+  <meta name="keywords" content="hcf,hcf by Euclid division lemma,hcf of 2 numbers,hcf by EDL,highest common factor,js,html,css,javascript,lcm">
+  <meta name="author" content="!i! JS !i!">
+  <title>HCF ★ LCM - JS</title>
+  <script src="cordova.js"></script>
+  <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+  <link rel="manifest" href="favicon/site.webmanifest">
+  <meta name="msapplication-TileColor" content="#DA532C">
+  <meta name="theme-color" content="#ffffff">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      transition: all .3s;
+      background: #222;
+      user-select: none;
+    }
+
+    @font-face {
+      font-family: js2;
+      src: url('js2.ttf')
+    }
+
+    @font-face {
+      font-family: js;
+      src: url('js.ttf')
+    }
+
+    .num2 {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      text-align: center;
+      flex-direction: column;
+      position: absolute;
+      min-height: 100vh;
+      height: 100%;
+    }
+
+    .inp {
+      color: white;
+      background: #999;
+      width: 60%;
+      height: 30px;
+      padding: 20px;
+      margin: 10px;
+      font-size: 1.1rem;
+      display: flex;
+      justify-content: center;
+      text-align: center;
+      outline: none;
+      border-radius: 20px;
+      border-top-color: yellow;
+      border-right-color: red;
+      border-bottom-color: green;
+      border-left-color: blue;
+      box-shadow: 0 5px 10px -5px #fff;
+    }
+
+    .inp:focus {
+      width: 65%;
+      border-top-color: blue;
+      border-right-color: yellow;
+      border-bottom-color: red;
+      border-left-color: green;
+      box-shadow: 0 -5px 10px -5px #fff;
+    }
+
+    .btn {
+      width: 100px;
+      height: 35px;
+      border: none;
+      border-radius: 10px;
+      background: linear-gradient(90deg, #888, #fff, #888);
+      font-size: 1.15rem;
+      outline: none;
+      margin: 10px;
+      transition: 0.08s;
+    }
+
+    .btn:active {
+      transform: scale(1.1);
+      background: linear-gradient(90deg, #E1FFE4, #40FF53, #E1FFE4);
+
+    }
+
+    #hcf {
+      margin: 50px 0;
+      margin-top: 10px;
+      width: 70%;
+      padding: 10px;
+      border: 2px solid;
+      border-top-color: blue;
+      border-right-color: green;
+      border-bottom-color: red;
+      border-left-color: yellow;
+      border-radius: 20px;
+      background: whitesmoke;
+      box-shadow: 0 0 10px 1px #808080BA;
+      font-family: js2;
+    }
+
+    .num2 h1 {
+      color: #E3E3E3;
+      margin: 50px;
+      margin-bottom: 10px;
+      font-family: js;
+    }
+
+    em {
+      color: gray;
+      margin-bottom: 50px;
+    }
+
+    .anim em {
+      color: white;
+      position: absolute;
+      z-index: -1;
+      top: 50%;
+      opacity: 0;
+      animation: anim2 3s ease-out 2s;
+    }
+
+    .anim {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: whitesmoke;
+      flex-direction: column;
+      animation: anim3 3s linear;
+      opacity: 0;
+
+    }
+
+    .anim h1 {
+      border: 1px solid white;
+      border-left-width: 15px;
+      border-right-width: 15px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 30px;
+      width: 70%;
+      height: 20%;
+      animation: anim 3s ease-out;
+      font-size: 2.8rem;
+      font-family: sans-serif;
+    }
+
+    .anim h1 p {
+      transform: scalex(0);
+      animation: anim1 3s ease .75s;
+    }
+
+    @keyframes anim {
+      0% {
+        width: 1%;
+      }
+
+      10% {
+        width: 70%;
+      }
+    }
+
+    @keyframes anim1 {
+      0% {
+        transform: rotateZ(-180deg) scalex(0)skew(0deg);
+      }
+
+      20%,
+      100% {
+        transform: rotateZ(0deg) scalex(1) skew(0deg);
+      }
+
+      38% {
+        transform: skew(0deg);
+
+      }
+
+      40% {
+        transform: skew(25deg);
+      }
+
+      42% {
+        transform: skew(0deg);
+
+      }
+    }
+
+    @keyframes anim2 {
+
+      0%,
+      1.5% {
+        top: 50%;
+        opacity: 1
+      }
+
+      3%,
+      100% {
+        top: 68%;
+        opacity: 1
+      }
+    }
+
+    @keyframes anim3 {
+      0% {
+        opacity: 1;
+        z-index: 1;
+
+      }
+
+      90% {
+        opacity: 1
+      }
+
+      100% {
+        opacity: 0;
+        z-index: 1;
+
+      }
+    }
+    b{
+      background:whitesmoke;
+      margin: 50px;
+      font-size:20px;
+      border-bottom:4px solid palegreen;
+    }
+  </style>
+</head>
+<body>
+  <div class="anim">
+    <h1>
+      <p>WELCOME</p>
+    </h1>
+    <em>-made by !i! JS !i!</em>
+  </div>
+  <div class="num2">
+    <h1>HCF and LCM By Using Euclid Division Lemma Method</h1><em>-made by !i! JS !i!</em><input type="number" id="val1" class="inp" placeholder="1st Number; a = Number" value='612'><input type="number" id="val2" class="inp" placeholder="2nd Number; Number < a" value="20"><button onclick="val()" class="btn">Get</button>
+    <p id="hcf">
+      Get Your HCF and Euclid Division Lemma with LCM HERE!
+    </p>
+  </div>
+  <script>
+    let val = () => {
+      var a, b, c, d, e, x, y, v = document.getElementById('hcf');
+      a = document.getElementById('val1').value; x = a;
+      b = document.getElementById('val2').value; y = b;
+      if (a.length > 21 || b.length > 21) alert('There is a limit of 20 digits!');
+      else {
+        v.innerHTML = `<b>H C F</b><br><br>Here is the Euclid's division lemma:-<br><br>`;
+        if (a % b == 0) v.innerHTML += `${x} = ${y} x ${x/y} + 0<br><br>So the HCF(${x},${y}) is ${y}.<br>---------------------------------------------------<br><b>L C M</b><br><br>LCM(a,b) x HCF(a,b) = a x b<br>Thus, LCM(a,b) = (a x b)/HCF(a,b)<br>LCM = (${x} x ${y})/${y}<br>So the LCM(${x},${y}) = ${x}`;
+        else {
+          while (a % b > 0) {
+            c = b;
+            b = a % b;
+            d = a - b;
+            e = d / c;
+            if (a > b)  v.innerHTML += `${a} = ${c} x ${e} + ${b}<br>`;
+            a = c;
+            c = b;
+          }
+          v.innerHTML += `${a} = ${c} x ${a/c} + 0<br><br>So the HCF(${x},${y}) is ${c}.<br>---------------------------------------------------<br><b>L C M</b><br><br>LCM(a,b) x HCF(a,b) = a x b<br>Thus, LCM(a,b) = (a x b)/HCF(a,b)<br>LCM = (${x} x ${y})/${c}<br>So the LCM(${x},${y}) = ${x*y/c}`;
+        }
+      }
+    }
+  </script>
+</body>
+</html>
