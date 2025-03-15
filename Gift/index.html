@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="icon" type="image/png" sizes="32x32" href="logo.webp">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <title>Digital Clock - A Gift for PV</title>
+   <link rel="stylesheet" href="style.css" type="text/css" media="all" />
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/odometer.js/0.4.8/themes/odometer-theme-minimal.min.css" integrity="sha512-xrkXFZ23kz8LEz0A+4xg9jIeawVCZPjsVoXcJhEKlWMmY3Sf2G4dRV0x8X1SaNVRBP35WaaYIDTs8ziFj0wsTg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Emblema+One&display=swap" rel="stylesheet">
+</head>
+
+<body>
+   <div id="team">
+      <img class="img" src="text.webp" alt="slogan">
+      <img src="team.webp" alt="team">
+      <div id="time">
+         <div class="circle" style="--clr:#ff2972">
+            <div class="dots sec_dot"></div>
+            <svg>
+               <circle cx=50% cy=50% r=48% id="ss" />
+            </svg>
+         </div>
+         <div class="circle" style="--clr:#FFD700">
+            <div class="dots min_dot"></div>
+            <svg>
+               <circle cx=50% cy=50% r=47.6% id="mm" />
+            </svg>
+         </div>
+         <div class="circle" style="--clr:#04fc43">
+            <div class="dots hr_dot"></div>
+            <svg>
+               <circle cx=50% cy=50% r=47.2% id="hh" />
+            </svg>
+         </div>
+         <div class="tmbx">
+            <div id="hr" style="--c:#04fc43"></div>
+            <div id="min" style="--c:#FFD700"></div>
+            <div id="sec" style="--c:#ff2972"></div>
+            <div class="ap" style="--c:#fff">
+               <div id="ampm"></div>
+            </div>
+            <div id="cl">Digital Clock</div>
+            <p id="cr">!i! JS !i!</p>
+         </div>
+      </div>
+      <div id="bottom">
+         <h1><span id='f'>#</span><span id="a">LET'S</span> <span id="b">CHANGE</span> <span id="c">THE</span> <span id="d">TIME</span> <i class="fa-regular fa-clock fa-sm" style="color: #ffffff;"></i> <span id="e">TOGETHER!</span></h1>
+         <p id="sub-para">Trusted by <span id="subs"></span> subscribers on <i class="fa-brands fa-youtube fa-s" style="color: #ff0000;"></i>!
+         </p>
+      </div>
+   </div>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/odometer.js/0.4.8/odometer.min.js" integrity="sha512-51WDTV7haD9BBDc8RWH2r5TnuSiRyAqEnbGyuKHYn+qpYCrCckxFeqlr1I5UoOULijyLV2vnHO9LS4MrAzHxwQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+   <script type="text/javascript" charset="utf-8" src="script.js"></script>
+   
+</body>
+
+</html>
