@@ -15,7 +15,6 @@ body {
   background: radial-gradient(#3F3F3F, #000);
   user-select: none;
   flex-direction: column;
-  pointer-events: none;
   -webkit-user-drag: none;
 }
 
@@ -40,11 +39,10 @@ body {
   0% {
     background-position: 0 0;
   }
-  
+
   100% {
     background-position: 200% 0;
   }
-  
 }
 
 
@@ -66,21 +64,21 @@ body {
 .sec_dot {
   width: 80%;
   height: 80%;
-  
+
 }
 
 #time .circle:nth-child(2) svg,
 .min_dot {
   width: 70%;
   height: 70%;
-  
+
 }
 
 #time .circle:nth-child(3) svg,
 .hr_dot {
   width: 60%;
   height: 60%;
-  
+
 }
 
 #time .circle svg circle {
@@ -111,7 +109,6 @@ body {
   box-shadow: 0 0 40px var(--clr), 0 0 30px var(--clr), 0 0 20px var(--clr), 0 0 10px var(--clr);
 }
 
-
 .tmbx {
   position: relative;
   inset: 0;
@@ -123,15 +120,12 @@ body {
   font-weight: bold;
 }
 
+
 .tmbx #hr::after,
 .tmbx #min::after {
   content: ':';
   position: absolute;
-}
-
-.tmbx div {
-  color: var(--c);
-  text-shadow: 0 0 10px var(--c), 0 0 20px var(--c);
+} .tmbx div {color: var(--c); text-shadow: 0 0 10px var(--c), 0 0 20px var(--c);
   margin: calc(var(--s)*.02);
   font-family: monospace;
 }
@@ -157,7 +151,7 @@ body {
 
 #cr {
   font-family: cursive;
-  translate: 0 300%;
+  translate: 0 250%;
   color: #38E8FF;
   text-shadow: 0 0 10px #38A6FF, 0 0 12px #38A6FF;
 }
@@ -173,6 +167,10 @@ body {
 
 :root {
   --s: 65vw;
+}
+
+img {
+  pointer-events: none;
 }
 
 
@@ -194,7 +192,7 @@ h1 {
   font-style: normal;
   text-shadow: 0px 0px 5px white;
   font-size: calc(var(--s)*.08);
-  
+
 }
 
 #a {
@@ -216,7 +214,7 @@ h1 i {
 
 #f {
   font-size: calc(var(--s)*.1);
-  
+
 }
 
 #e {
@@ -228,13 +226,17 @@ h1 i {
   font-optical-sizing: auto;
   font-weight: 600;
   font-style: normal;
-  text-shadow: 0 0 5px #666;
+  text-shadow: 0 0 6px #666;
   font-size: calc(var(--s)*.05);
+}
+
+a{
+  text-decoration: none;  
+  color: #fff;
 }
 
 #sub-para i {
   text-shadow: 0 0 10px #FF2F2F4F;
-  
 }
 
 #bottom {
@@ -244,7 +246,7 @@ h1 i {
   width: calc(var(--s)*1.3);
   left: 50%;
   translate: -50%;
-  top: 75vw;
+  top: 115%;
 }
 
 
@@ -269,27 +271,42 @@ h1 i {
   left: 50%;
   translate: -50%;
 }
-@media (orientation: landscape) {
+
+@media (min-aspect-ratio: 1.4) {
   :root {
-    --s: 25vw;
+    --s: 28vw!important
   }
-  
+
   #time,
   #team_img {
-    left: 20vw;
-    top: 3vw;
+    left: 80%;
+    top: 8vh;
   }
-  
+
   #bottom {
-    top: 0;
-    transform: translate(-50%, 100%);
-  }
-  
-  
-  .img {
-    width: calc(var(--s)*1.5);
-    top: 0%;
-    left: -24vw;
+    top: 30vh;
+    left: -85%;
     translate: 0;
+  }
+
+
+  .img {
+    width: calc(var(--s)*1.6);
+    translate: 0;
+    top: 5vh;
+    left: -105%;
+
+  }
+}
+
+@media (min-aspect-ratio: 2){
+  :root{
+    --s: 56vh!important;
+  }
+}
+
+@media (min-aspect-ratio: .625) {
+  :root{
+    --s:40vh;
   }
 }
