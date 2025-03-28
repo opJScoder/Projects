@@ -1,0 +1,3 @@
+User-agent: *
+Disallow:
+Sitemap: https://opjscoder.github.io/Projects/Gift/sitemap.xml
