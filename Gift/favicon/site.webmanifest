@@ -1,21 +1,23 @@
 {
-  "name": "Priyeshsir Vidhyapeeth - Digital Clock",
-  "short_name": "Digital Clock",
-  "icons": [
-    {
-      "src": "https://opjscoder.github.io/Projects/Gift/favicon/web-app-manifest-192x192.png",
-      "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "any maskable"
-    },
-    {
-      "src": "https://opjscoder.github.io/Projects/Gift/favicon/web-app-manifest-512x512.png",
-      "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "any maskable"
-    }
-  ],
-  "theme_color": "#c3ccd3",
-  "background_color": "#c3ccd3",
-  "display": "standalone"
+"name": "Priyeshsir Vidhyapeeth - Digital Clock",
+"short_name": "Digital Clock",
+"start_url": "/gift/",
+"scope": "/gift/",
+"icons": [
+{
+"src": "web-app-manifest-192x192.png",
+"sizes": "192x192",
+"type": "image/png",
+"purpose": "any maskable"
+},
+{
+"src": "web-app-manifest-512x512.png",
+"sizes": "512x512",
+"type": "image/png",
+"purpose": "any maskable"
+}
+],
+"theme_color": "#c3ccd3",
+"background_color": "#c3ccd3",
+"display": "standalone",
 }
